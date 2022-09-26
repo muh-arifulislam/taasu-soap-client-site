@@ -1,0 +1,42 @@
+[
+    {   
+        "id":"0",
+        "title": "Happy Organic September!",
+        "article": "Make the switch to organic soaps this September with out rich, natural & wholesome soap, fragranced with only pure essential oils.",
+        "btnText": "Organics Range",
+        "btnUrl": "#",
+        "image":"https://i.ibb.co/QCwJKgq/banner1.jpg"
+    },
+    {   
+        "id":"1",
+        "title": "All-natural handmade soap. created in the cotswodds",
+        "article": "The Cotsworlds is where our products were born, and our story began. Follow our journey from the kitchen table to the supermarket shelf.",
+        "btnText": "Our Story",
+        "btnUrl": "#",
+        "image":"https://i.ibb.co/7yZxzTD/banner2.jpg"
+    },
+    {
+        "id":"2",
+        "title": "We've been awarded The Queens Award!",
+        "article": "Eliminate unnecessary plastic bottles with our innovative Eco Warrior range. Functional bars to cleanse from head to toe",
+        "btnText": "Eco Warrior Range",
+        "btnUrl": "#",
+        "image":"https://i.ibb.co/kxHqwGZ/banner3.jpg"
+    },
+    {
+        "id":"3",
+        "title": "Introducing our B Corp Impact Report!",
+        "article": "Read our latest report where we'll take you through what we have done, and continue to do for the planet, for nature & communities.",
+        "btnText": "Read now",
+        "btnUrl": "#",
+        "image":"https://i.ibb.co/6Fmd0rD/banner4.jpg"
+    },
+    {
+        "id":"4",
+        "title": "Eco Bathroom. Join the Revolution.",
+        "article": "Packed full of blogs, giveaways and inspiration. Eco Bathroom is your new favorite one stop eco shop. The bathroom is a space where small changes can make a big difference",
+        "btnText": "Eco Bathroom",
+        "btnUrl": "#",
+        "image":"https://i.ibb.co/YQrZttx/banner5.jpg"
+    }
+]
