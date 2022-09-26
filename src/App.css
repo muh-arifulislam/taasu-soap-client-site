@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.inner-container-edge{
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+.inner-container-edge::after{
+  content: '';
+  height: 25px;
+  width: 100%;
+  background: url(./images/rough-edge-white.svg);
+}

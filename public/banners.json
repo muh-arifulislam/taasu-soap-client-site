@@ -30,13 +30,5 @@
         "btnText": "Read now",
         "btnUrl": "#",
         "image":"https://i.ibb.co/6Fmd0rD/banner4.jpg"
-    },
-    {
-        "id":"4",
-        "title": "Eco Bathroom. Join the Revolution.",
-        "article": "Packed full of blogs, giveaways and inspiration. Eco Bathroom is your new favorite one stop eco shop. The bathroom is a space where small changes can make a big difference",
-        "btnText": "Eco Bathroom",
-        "btnUrl": "#",
-        "image":"https://i.ibb.co/YQrZttx/banner5.jpg"
     }
 ]
