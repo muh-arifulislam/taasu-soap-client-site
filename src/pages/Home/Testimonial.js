@@ -4,9 +4,9 @@ import Feature from '../../shared/Feature';
 const Testimonial = () => {
     return (
         <section className='mt-[100px] lg:mx-[100px] mx-[20px] text-center'>
-            <h2 className='text-[22px] mb-[20px]'>
+            <h1 className='mb-[20px] font-secondary'>
                 Simple ingredients you understand…
-            </h2>
+            </h1>
             <h4 className='text-[20px] mb-[20px] font-bold'>
                 Vegan, cruelty-free and hand-crafted in the UK, our soaps are made using the finest natural ingredients, all ethically sourced.
             </h4>

@@ -3,6 +3,8 @@ import './App.css';
 import Header from './shared/Header';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home/Home';
+import Subscribe from './shared/Subscribe';
+import Footer from './shared/Footer';
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
       </Routes>
+      <Subscribe></Subscribe>
+      <Footer></Footer>
     </div>
   );
 }
