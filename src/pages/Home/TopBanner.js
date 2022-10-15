@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/autoplay";
 // import required modules
 import { Pagination, Autoplay } from "swiper";
-import Banner from './Banner';
+import BannerPrimary from '../../shared/BannerPrimary';
 const TopBanner = () => {
     const [banners, setBanners] = useState([]);
     useEffect(() => {
@@ -34,7 +34,7 @@ const TopBanner = () => {
             >
                 {
                     banners.map(banner => <SwiperSlide key={banner.id}>
-                        <Banner banner={banner}></Banner>
+                        <BannerPrimary banner={banner} bannerBg={banner.image}></BannerPrimary>
                     </SwiperSlide>)
                 }
             </Swiper>

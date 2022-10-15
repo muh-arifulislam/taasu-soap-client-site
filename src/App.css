@@ -32,13 +32,26 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-.font-secondary{
+.font-secondary {
   font-family: 'Caveat Brush', cursive;
   font-size: 2.7rem;
+  line-height: 1;
   color: #303e47;
+}
+
+.bottom-edge-secondary::after {
+  content: "";
+  height: 20px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-image: url(../src/images/rough-edge-white.svg);
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
