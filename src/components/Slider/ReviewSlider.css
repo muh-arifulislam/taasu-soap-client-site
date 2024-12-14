@@ -1,0 +1,31 @@
+.reviewSlider {
+  width: 100%;
+  height: 100%;
+}
+
+.reviewSlider > .swiper-slide {
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reviewSlider > .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.reviewSlider {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reviewSlider {
+  padding-bottom: 20px;
+}
+
+.reviewSlider .swiper-pagination {
+  bottom: 0;
+}

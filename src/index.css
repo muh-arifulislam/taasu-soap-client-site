@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* google fonts  */
+@import url("https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap");
+
+.font-caveat-brush {
+  font-family: "Caveat Brush", cursive;
+}
+
+.bottom-edge-secondary::after {
+  content: "";
+  height: 20px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-image: url(../src/images/icons/rough-edge-white.svg);
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}

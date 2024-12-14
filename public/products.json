@@ -1,0 +1,98 @@
+[
+    {
+        "productId": "lsc 1101",
+        "name": "Organic Pure Rose Geranium Soap Bar 110g",
+        "title": "Geranium Soap",
+        "price": "3.99",
+        "descriptions": [
+            "We call it our ‘happy soap’ – the subtle scent of Rose Geranium quite simply makes you close your eyes and smile. A heavenly bar; ideal for everyday use, but with a luxurious touch.",
+            "Pure Organic bar soap made with the finest natural ingredients and pure Rose Geranium essential oil. Perfect for bath, shower & sink."
+        ],
+        "quantity": "120",
+        "sold": "120",
+        "advantages": [
+            "Totally free from detergents, SLS, sulphates, alcohol, parabens, sorbates, silicones & synthetic preservatives",
+            "Made from Natural Ingredients",
+            "Plant based and 100% Vegan",
+            "Leaping Bunny Cruelty Free",
+            "Plastic Free, Eco Friendly and Biodegradable (soap and packaging)",
+            "RSPO Certified Sustainable Palm Oil"
+        ],
+        "indgredients": [
+            "Sodium Palmate* (derived from sustainable Palm Oil), Sodium Cocoate (derived from Coconut Oil), Aqua (Water), Naturally Occurring Glycerin (Glycerine), Rose Geranium Essential Oil (Pelargonium Graveolens), Sodium Chloride (Salt), Sodium Citrate (sodium salt derived from citric acid), Limonene**, Linalool**",
+            "*made from 100% RSPO certified sustainable Palm Oil and Palm Kernel Oil",
+            "**allergen – naturally occurring within the essential oils",
+            "Made with 85.8% certified Organic Oils."
+        ],
+        "addInformation": {
+            "weight": "0.125 kg",
+            "dimension": "8.8 × 5.9 × 3.7 cm",
+            "direction": "Use with warm water to create a luxurious, silky lather. Wash off. Suitable for face and body.",
+            "warnings": "Avoid contact with the eyes. If product enters the eyes rinse well with warm water."
+        }
+    },
+    {
+        "productId": "lsc 1102",
+        "name": "Organic Pure Lavender Soap Bar 110g",
+        "title": "Organic Lavender Soap",
+        "price": "3.99",
+        "descriptions": [
+            "Lavender and its warm spicy smell always puts us at ease. It is versatile, calming & relaxing. Pure and simple, just as Mother Nature intended.",
+            "Pure Organic soap made with the finest natural ingredients and pure Lavender essential oil. Perfect for bath, shower & sink."
+        ],
+        "quantity": "120",
+        "sold": "120",
+        "advantages": [
+            "Totally free from detergents, SLS, sulphates, alcohol, parabens, sorbates, silicones & synthetic preservatives",
+            "Made from Natural Ingredients",
+            "Plant based and 100% Vegan",
+            "Leaping Bunny Cruelty Free",
+            "Plastic Free, Eco Friendly and Biodegradable (soap and packaging)",
+            "RSPO Certified Sustainable Palm Oil"
+        ],
+        "indgredients": [
+            "Sodium Palmate* (derived from sustainable Palm Oil), Sodium Cocoate (derived from Coconut Oil), Aqua (Water), Naturally Occurring Glycerin (Glycerine), Rose Geranium Essential Oil (Pelargonium Graveolens), Sodium Chloride (Salt), Sodium Citrate (sodium salt derived from citric acid), Limonene**, Linalool**",
+            "*made from 100% RSPO certified sustainable Palm Oil and Palm Kernel Oil",
+            "**allergen – naturally occurring within the essential oils",
+            "Made with 85.8% certified Organic Oils."
+        ],
+        "addInformation": {
+            "weight": "0.125 kg",
+            "dimension": "8.8 × 5.9 × 3.7 cm",
+            "direction": "Use with warm water to create a luxurious, silky lather. Wash off. Suitable for face and body.",
+            "warnings": "Avoid contact with the eyes. If product enters the eyes rinse well with warm water."
+        }
+    },
+    {
+        "productId": "lsc 1105",
+        "name": "Organic Lavender & Citrus Soap Bar 110g",
+        "title": "English Lavender Soap",
+        "price": "3.99",
+        "description": [
+            "Combining revitalising Lavender with zingy Citrus, this little ray of sublime soapy sunshine will refresh, tone, cleanse and purify your skin, and add a spring to your step!",
+            "Pure Organic bar soap made with the finest natural ingredients and pure Lavender & Orange essential oils. Perfect for bath, shower & sink.."
+        ],
+        "quantity": "120",
+        "sold": "120",
+        "advantages": [
+            "Totally free from detergents, SLS, sulphates, alcohol, parabens, sorbates, silicones & synthetic preservatives",
+            "Made from Natural Ingredients",
+            "Plant based and 100% Vegan",
+            "Leaping Bunny Cruelty Free",
+            "Plastic Free, Eco Friendly and Biodegradable (soap and packaging)",
+            "RSPO Certified Sustainable Palm Oil"
+        ],
+        "indgredients": [
+            "Sodium Palmate* (derived from sustainable Palm Oil), Sodium Cocoate (derived from Coconut Oil), Aqua (Water), Naturally Occurring Glycerin (Glycerine), Rose Geranium Essential Oil (Pelargonium Graveolens), Sodium Chloride (Salt), Sodium Citrate (sodium salt derived from citric acid), Limonene**, Linalool**",
+            "*made from 100% RSPO certified sustainable Palm Oil and Palm Kernel Oil",
+            "**allergen – naturally occurring within the essential oils",
+            "Made with 85.8% certified Organic Oils."
+        ],
+        "addInformation": {
+            "weight": "0.125 kg",
+            "dimension": "8.8 × 5.9 × 3.7 cm",
+            "direction": "Use with warm water to create a luxurious, silky lather. Wash off. Suitable for face and body.",
+            "warnings": "Avoid contact with the eyes. If product enters the eyes rinse well with warm water."
+        }
+    }
+]

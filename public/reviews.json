@@ -1,0 +1,162 @@
+[
+  {
+    "review": "Leaves the skin soft and smooth. Amazing fragrance!",
+    "rating": 5,
+    "name": "Alice Johnson",
+    "date": "2024-11-01T14:32:00Z",
+    "like": 45,
+    "dislike": 2
+  },
+  {
+    "review": "The soap is good but dries out my skin slightly.",
+    "rating": 3,
+    "name": "Michael Brown",
+    "date": "2024-11-02T09:45:00Z",
+    "like": 23,
+    "dislike": 10
+  },
+  {
+    "review": "Absolutely love it! Best soap I've ever used.",
+    "rating": 5,
+    "name": "Sophia Martinez",
+    "date": "2024-11-03T17:20:00Z",
+    "like": 60,
+    "dislike": 1
+  },
+  {
+    "review": "It's okay, nothing extraordinary. Not worth the price.",
+    "rating": 2,
+    "name": "James Smith",
+    "date": "2024-11-04T11:15:00Z",
+    "like": 12,
+    "dislike": 15
+  },
+  {
+    "review": "I love the packaging but the soap doesn't lather well.",
+    "rating": 3,
+    "name": "Emma Davis",
+    "date": "2024-11-05T18:30:00Z",
+    "like": 34,
+    "dislike": 5
+  },
+  {
+    "review": "Smells amazing and leaves my skin feeling fresh.",
+    "rating": 4,
+    "name": "Olivia Garcia",
+    "date": "2024-11-06T08:10:00Z",
+    "like": 47,
+    "dislike": 3
+  },
+  {
+    "review": "Very harsh on sensitive skin. Would not recommend.",
+    "rating": 1,
+    "name": "Noah Wilson",
+    "date": "2024-11-07T13:40:00Z",
+    "like": 5,
+    "dislike": 20
+  },
+  {
+    "review": "Great value for the price. Highly recommend!",
+    "rating": 5,
+    "name": "Liam Anderson",
+    "date": "2024-11-08T19:25:00Z",
+    "like": 38,
+    "dislike": 1
+  },
+  {
+    "review": "Not bad but there are better options out there.",
+    "rating": 3,
+    "name": "Charlotte Thomas",
+    "date": "2024-11-09T15:50:00Z",
+    "like": 18,
+    "dislike": 9
+  },
+  {
+    "review": "I am allergic to it. Had to stop using it.",
+    "rating": 1,
+    "name": "Mason Taylor",
+    "date": "2024-11-10T10:00:00Z",
+    "like": 2,
+    "dislike": 40
+  },
+  {
+    "review": "Perfect for daily use. Very moisturizing.",
+    "rating": 5,
+    "name": "Ava Moore",
+    "date": "2024-11-11T21:15:00Z",
+    "like": 55,
+    "dislike": 2
+  },
+  {
+    "review": "Doesn’t last long, but smells good.",
+    "rating": 3,
+    "name": "Ethan Jackson",
+    "date": "2024-11-12T14:00:00Z",
+    "like": 22,
+    "dislike": 8
+  },
+  {
+    "review": "Works great for my skin type. A must-buy!",
+    "rating": 5,
+    "name": "Isabella White",
+    "date": "2024-11-13T12:45:00Z",
+    "like": 40,
+    "dislike": 3
+  },
+  {
+    "review": "It’s too expensive for the quality provided.",
+    "rating": 2,
+    "name": "Lucas Harris",
+    "date": "2024-11-14T09:30:00Z",
+    "like": 10,
+    "dislike": 14
+  },
+  {
+    "review": "The soap is eco-friendly and gentle on skin.",
+    "rating": 4,
+    "name": "Mia Clark",
+    "date": "2024-11-15T20:10:00Z",
+    "like": 48,
+    "dislike": 5
+  },
+  {
+    "review": "Dries my skin out too much.",
+    "rating": 2,
+    "name": "Benjamin Martinez",
+    "date": "2024-11-16T16:00:00Z",
+    "like": 8,
+    "dislike": 25
+  },
+  {
+    "review": "Fantastic soap! My whole family loves it.",
+    "rating": 5,
+    "name": "Emily Lewis",
+    "date": "2024-11-17T11:20:00Z",
+    "like": 62,
+    "dislike": 1
+  },
+  {
+    "review": "Good product, but the scent is too strong for me.",
+    "rating": 3,
+    "name": "Henry Walker",
+    "date": "2024-11-18T14:55:00Z",
+    "like": 19,
+    "dislike": 6
+  },
+  {
+    "review": "Feels luxurious, but it melts too quickly.",
+    "rating": 4,
+    "name": "Amelia Hall",
+    "date": "2024-11-19T09:10:00Z",
+    "like": 35,
+    "dislike": 7
+  },
+  {
+    "review": "Not suitable for sensitive skin. Causes irritation.",
+    "rating": 1,
+    "name": "Sebastian Young",
+    "date": "2024-11-20T08:25:00Z",
+    "like": 3,
+    "dislike": 30
+  }
+]
