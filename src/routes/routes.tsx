@@ -20,6 +20,7 @@ import ManageAddresses from "../pages/dashboard/ManageAddresses";
 import Notifications from "../pages/dashboard/Notifications";
 import Settings from "../pages/dashboard/Settings";
 import OrderTrack from "../pages/orderTrack/OrderTrack";
+import BlogDetails from "../pages/blog/Blog[id]";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blog />,
+      },
+      {
+        path: "/blogs/:id",
+        element: <BlogDetails />,
       },
       {
         path: "/my-section",
