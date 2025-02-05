@@ -11,7 +11,14 @@ const BlogDetails = () => {
   if (isLoading) {
     return (
       <>
-        <div>loading...</div>
+        <div className="max-w-[1200px] mx-auto px-4 my-10">
+          <div className="flex w-full flex-col gap-4">
+            <div className="skeleton h-96 w-full"></div>
+            <div className="skeleton h-4 w-[70%]"></div>
+            <div className="skeleton h-4 w-full"></div>
+            <div className="skeleton h-4 w-full"></div>
+          </div>
+        </div>
       </>
     );
   }

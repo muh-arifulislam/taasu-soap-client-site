@@ -1,13 +1,13 @@
 import { useAppSelector } from "../../redux/hook";
 import { selectCart } from "../../redux/features/cart/cartSlice";
 import CartTable from "../../components/Table/CartTable";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useGetUserQuery } from "../../redux/features/user/userApi";
+import { FaCartShopping } from "react-icons/fa6";
+import useCalculateSubtotal from "../../utils/calculateSubtotal";
 
 const Cart = () => {
-  const [subtotal, setSubtotal] = useState<number>(0);
-
   const cartItems = useAppSelector(selectCart);
 
   const navigate = useNavigate();
@@ -27,15 +27,7 @@ const Cart = () => {
     }
   };
 
-  useEffect(() => {
-    if (cartItems.length) {
-      const total = cartItems.reduce(
-        (total, item) => total + item.price * item.quantity,
-        0
-      );
-      setSubtotal(total);
-    }
-  }, [cartItems]);
+  const subtotal = useCalculateSubtotal();
 
   const sessionData = sessionStorage.getItem("shopping_session");
   useEffect(() => {
@@ -49,7 +41,28 @@ const Cart = () => {
         <h1 className="text-3xl font-semibold">Checkout</h1>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-0 sm:gap-x-10 gap-y-10">
           <div className="col-span-2">
-            <CartTable data={cartItems} />
+            {cartItems?.length > 0 ? (
+              <CartTable data={cartItems} />
+            ) : (
+              <div className="text-center w-full h-full flex items-center justify-center py-8">
+                <div>
+                  <div className="flex items-center justify-center">
+                    <FaCartShopping size={68} />
+                  </div>
+                  <p className="text-3xl font-bold mb-3">
+                    Your Cart Is Currently Empty!
+                  </p>
+                  <p className="w-[70%] mx-auto mb-4">
+                    Before process to checkout you must add some products to
+                    your shopping cart. You will find a lot of interesting
+                    products on our "Shop" page.
+                  </p>
+                  <NavLink to={`/shop`}>
+                    <button className="btn btn-primary">Return to Shop</button>
+                  </NavLink>
+                </div>
+              </div>
+            )}
           </div>
           <div className="border p-4">
             <div className="flex justify-between items-center">

@@ -17,8 +17,29 @@ const shippingAddressApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["shippingAddress"],
     }),
+
+    addAddress: builder.mutation({
+      query: (payload) => ({
+        url: `/shipping-addresses`,
+        method: "POST",
+        body: payload,
+      }),
+      invalidatesTags: ["shippingAddress"],
+    }),
+    updateAddress: builder.mutation({
+      query: (payload) => ({
+        url: `/shipping-addresses/${payload.id}`,
+        method: "PUT",
+        body: payload.data,
+      }),
+      invalidatesTags: ["shippingAddress"],
+    }),
   }),
 });
 
-export const { useGetAllAddressQuery, useDeleteAddressMutation } =
-  shippingAddressApi;
+export const {
+  useGetAllAddressQuery,
+  useDeleteAddressMutation,
+  useAddAddressMutation,
+  useUpdateAddressMutation,
+} = shippingAddressApi;
