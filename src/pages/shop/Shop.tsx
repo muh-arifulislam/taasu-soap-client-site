@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import ProductCard from "../../components/Card/ProductCard";
 import Breadcrum from "../../components/Breadcrum/Breadcrum";
 import { useGetAllProductsQuery } from "../../redux/features/product/productApi";
+import { NavLink } from "react-router-dom";
 const Shop = () => {
   const banner = {
     title: "Shop",
@@ -21,6 +22,7 @@ const Shop = () => {
   const { data, isLoading } = useGetAllProductsQuery(undefined);
 
   useEffect(() => {
+    console.log(data);
     if (data?.success) {
       setProducts(data?.data);
     }
@@ -46,8 +48,55 @@ const Shop = () => {
           </div>
         </div>
       </div>
-      <div className="grid lg:grid-cols-4 grid-cols-3 lg:mx-[100px] mx-[10px] mt-[50px]">
-        <div className="lg:block hidden">this is query section</div>
+      <div className="grid lg:grid-cols-4 grid-cols-3 lg:mx-[100px] mx-[10px] mt-[50px] gap-8 my-10">
+        <div className="lg:block hidden">
+          <div className="bg-slate-100 p-5 ">
+            <div className="mb-5">
+              <h2 className="text-2xl font-caveat-brush font-bold mb-2">
+                By Fragrance
+              </h2>
+              <ul>
+                <li className="mb-1 text-lg">
+                  <NavLink to={`/shop`}>Citrus</NavLink>
+                </li>
+                <li className="mb-1 text-lg">
+                  <NavLink to={`/shop`}>Exotic</NavLink>
+                </li>
+                <li className="mb-1 text-lg">
+                  <NavLink to={`/shop`}>Floral</NavLink>
+                </li>
+                <li className="mb-1 text-lg">
+                  <NavLink to={`/shop`}>Mixed</NavLink>
+                </li>
+                <li className="mb-1 text-lg">
+                  <NavLink to={`/shop`}>Unscented</NavLink>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2 className="text-2xl mb-2 font-caveat-brush font-bold">
+                By For
+              </h2>
+              <ul>
+                <li className="mb-1 text-lg">
+                  <NavLink to={`/shop`}>Face and Body</NavLink>
+                </li>
+                <li className="mb-1 text-lg">
+                  <NavLink to={`/shop`}>Gifting</NavLink>
+                </li>
+                <li className="mb-1 text-lg">
+                  <NavLink to={`/shop`}>Hair</NavLink>
+                </li>
+                <li className="mb-1 text-lg">
+                  <NavLink to={`/shop`}>Hands</NavLink>
+                </li>
+                <li className="mb-1 text-lg">
+                  <NavLink to={`/shop`}>Sensitive</NavLink>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <div className="col-span-3">
           <div className="grid lg:grid-cols-3 grid-cols-2 gap-[10px]">
             {products?.map((product, idx) => (

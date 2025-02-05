@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import image from "../../assets/images/LSC_MumBaby_Bundle_updated.jpg";
+import image from "../../assets/images/Org-Home-1.jpg";
 import { TProduct } from "../../types";
 import { useDispatch } from "react-redux";
 import { addToCart, selectCart } from "../../redux/features/cart/cartSlice";
