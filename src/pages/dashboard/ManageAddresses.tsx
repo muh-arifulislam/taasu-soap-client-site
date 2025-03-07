@@ -12,8 +12,7 @@ import EditAddressModal from "../../components/Modal/EditAddressModal";
 import { useState } from "react";
 
 const ManageAddresses = () => {
-  const { data, refetch, isLoading, isFetching } =
-    useGetAllAddressQuery(undefined);
+  const { data, refetch, isLoading } = useGetAllAddressQuery(undefined);
 
   const [handleDeleteAddress] = useDeleteAddressMutation();
 

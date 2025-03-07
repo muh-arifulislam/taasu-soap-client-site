@@ -29,6 +29,8 @@ const Login = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onSubmit = async (data: any) => {
+    const toastId = toast.loading("Signing");
+
     const response = await handleLogin(data);
     if (response?.data?.success) {
       const { accessToken } = response.data.data;
@@ -41,6 +43,9 @@ const Login = () => {
         })
       );
       navigate("/shop");
+      toast.success("login success", { id: toastId });
+    } else if (response?.error) {
+      toast.error(response?.error?.data?.message, { id: toastId });
     }
   };
 

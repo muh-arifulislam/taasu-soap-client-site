@@ -19,7 +19,6 @@ import soapImg3 from "../../assets/images/Org-Home-3.jpg";
 
 const ProductDetails = () => {
   const [reviews, setReviews] = useState(5);
-
   const { productId } = useParams();
   const productNameConv = productId?.replaceAll("-", " ");
   const [product, setProduct] = useState<TProduct | null>();
@@ -33,9 +32,6 @@ const ProductDetails = () => {
         setProduct(result);
       });
   }, []);
-  function sub() {
-    console.log(orderQuantity);
-  }
 
   const images = [soapImg1, soapImg2, soapImg3];
 
@@ -71,7 +67,7 @@ const ProductDetails = () => {
               </div>
             </div>
             <div>
-              <h1 className="font-caveat-brush text-3xl text-slate-600 leading-tight mb-2">
+              <h1 className="font-secondary text-primary font-bold leading-[2.5rem]  sm:leading-[4rem] text-xl sm:text-[1.6rem] mb-2">
                 {product.name}
               </h1>
               <div className="flex items-center mb-4 gap-3">
@@ -99,17 +95,13 @@ const ProductDetails = () => {
                     }
                   />
                 </span>
-                <button
-                  onClick={() => sub()}
-                  className="bg-primary text-white px-[30px] font-bold text-xl rounded-md"
-                >
+                <button className="bg-primary text-white px-[30px] font-bold text-xl rounded-md">
                   Add to basket
                 </button>
               </div>
 
               <img className="mt-[40px]" src={ingredientsImage} alt="" />
-              <div>
-                <h2 className="font-secondary">{product.title}</h2>
+              <div className="my-5">
                 {product.descriptions?.map((des, idx) => (
                   <h2 key={idx} className="text-xl mb-[20px]">
                     {des}

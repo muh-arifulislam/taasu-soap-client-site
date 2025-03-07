@@ -19,7 +19,8 @@ const Sidebar = () => {
           <div>
             <small>Hello,</small>
             <p className="font-bold">
-              {data?.data?.firstName + " " + data?.data?.lastName}
+              {data?.success &&
+                data?.data?.firstName + " " + data?.data?.lastName}
             </p>
           </div>
         </div>

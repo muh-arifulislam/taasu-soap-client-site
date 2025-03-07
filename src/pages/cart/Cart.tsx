@@ -12,7 +12,7 @@ const Cart = () => {
 
   const navigate = useNavigate();
 
-  const { data } = useGetUserQuery(undefined);
+  const { data, isLoading } = useGetUserQuery(undefined);
 
   const handleProcessCheckout = () => {
     if (cartItems.length > 0 && data?.success) {
@@ -24,6 +24,8 @@ const Cart = () => {
 
       sessionStorage.setItem("shopping_session", JSON.stringify(payload));
       navigate("/checkout");
+    } else {
+      navigate("/login");
     }
   };
 
@@ -31,10 +33,10 @@ const Cart = () => {
 
   const sessionData = sessionStorage.getItem("shopping_session");
   useEffect(() => {
-    if (sessionData) {
+    if (sessionData && data?.success) {
       navigate("/checkout");
     }
-  }, []);
+  }, [isLoading]);
   return (
     <div className="container mx-auto px-4">
       <div className="my-10">

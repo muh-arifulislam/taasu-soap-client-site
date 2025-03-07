@@ -1,18 +1,39 @@
-import image from "../../assets/icons/content-box-bg-pink.svg";
-
+import React from "react";
 import Button from "../Button/Button";
 
-const CardFeature = () => {
+interface CardFeatureProps {
+  title: string;
+  description: string;
+  buttonText?: string;
+  className?: string;
+  image: string;
+  onButtonClick?: () => void;
+}
+
+const CardFeature: React.FC<CardFeatureProps> = ({
+  title,
+  description,
+  image,
+  buttonText = "Shop Now",
+  className,
+  onButtonClick,
+}) => {
   return (
     <div
-      className="mt-[20px] pt-[30px] pb-[20px] px-[20px]"
-      style={{ background: `url(${image})` }}
+      className={`mt-[20px] pt-[30px] pb-[20px] px-[20px] flex flex-col items-center justify-between ${className}`}
+      style={
+        image ? { background: `url(${image})`, backgroundSize: "cover" } : {}
+      }
     >
-      <h4 className="text-[34px] mb-[10px]">Free Delivery</h4>
-      <p className="text-xl mb-[20px]">
-        When you spend over £30, you can now enjoy free shipping on our soaps!
-      </p>
-      <Button variant="secondary">Shop Now</Button>
+      <div>
+        <h4 className="mb-[10px] font-secondary text-xl leading-10">{title}</h4>
+        <p className="text-xl mb-[20px]">{description}</p>
+      </div>
+      {buttonText && (
+        <Button variant="primary" onClick={onButtonClick}>
+          {buttonText}
+        </Button>
+      )}
     </div>
   );
 };

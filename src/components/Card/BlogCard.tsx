@@ -11,8 +11,11 @@ const BlogCard = ({ data }: { data: IBlog }) => {
     <div className="card max-w-96 w-full">
       <figure>
         <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-          alt="car!"
+          src={
+            data.featuredImage ??
+            "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          }
+          alt="blog_image"
           className="rounded-[1rem]"
         />
       </figure>

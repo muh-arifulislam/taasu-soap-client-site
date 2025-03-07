@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import image from "../../assets/images/Org-Home-1.jpg";
 import { TProduct } from "../../types";
 import { useDispatch } from "react-redux";
 import { addToCart, selectCart } from "../../redux/features/cart/cartSlice";
@@ -45,7 +44,7 @@ const ProductCard = ({ product }: { product: TProduct }) => {
         onClick={() => navigate(`/shop/${productName}`)}
         className="hover:cursor-pointer"
       >
-        <img src={image} alt="" />
+        <img src={product?.images[0]} alt="" />
         <h2 className="font-bold my-[9px]">{product?.name}</h2>
         <h4 className="mb-[9px]">
           ${product?.price} <span>inc. VAT</span>

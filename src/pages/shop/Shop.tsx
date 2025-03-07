@@ -5,6 +5,8 @@ import ProductCard from "../../components/Card/ProductCard";
 import Breadcrum from "../../components/Breadcrum/Breadcrum";
 import { useGetAllProductsQuery } from "../../redux/features/product/productApi";
 import { NavLink } from "react-router-dom";
+import ErrorComponent from "../../components/ui/ErrorComponent";
+
 const Shop = () => {
   const banner = {
     title: "Shop",
@@ -17,12 +19,11 @@ const Shop = () => {
     },
   };
 
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<[]>([]);
 
-  const { data, isLoading } = useGetAllProductsQuery(undefined);
+  const { data, isLoading, isError } = useGetAllProductsQuery(undefined);
 
   useEffect(() => {
-    console.log(data);
     if (data?.success) {
       setProducts(data?.data);
     }
@@ -37,9 +38,9 @@ const Shop = () => {
         ]}
       />
       <PageHeader data={banner} />
-      <div className="relative py-[20px] bg-secondary bottom-edge-secondary">
-        <div className="flex justify-center items-center gap-[50px] ">
-          <h2 style={{ fontSize: "5rem" }} className="font-secondary">
+      <div className="relative py-8 sm:py-[60px] bg-secondary bottom-edge-secondary">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-[50px] text-center">
+          <h2 className="font-secondary text-xl sm:text-[2.5rem] font-caveat-brush">
             Special Offers!
           </h2>
           <div className="text-xl">
@@ -98,11 +99,9 @@ const Shop = () => {
           </div>
         </div>
         <div className="col-span-3">
-          <div className="grid lg:grid-cols-3 grid-cols-2 gap-[10px]">
-            {products?.map((product, idx) => (
-              <ProductCard key={idx} product={product}></ProductCard>
-            ))}
-          </div>
+          {isLoading && <LoadingComponent />}
+          {isError && <ErrorComponent />}
+          {products && <ContentComponent data={products} />}
         </div>
       </div>
     </section>
@@ -110,3 +109,19 @@ const Shop = () => {
 };
 
 export default Shop;
+
+const ContentComponent = ({ data }: { data: [] }) => (
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[10px]">
+    {data.map((product, idx) => (
+      <ProductCard key={idx} product={product}></ProductCard>
+    ))}
+  </div>
+);
+
+const LoadingComponent = () => (
+  <div className="grid lg:grid-cols-3 grid-cols-2 gap-[10px]">
+    <div className="skeleton min-h-[350px] w-full"></div>
+    <div className="skeleton min-h-[350px] w-full"></div>
+    <div className="skeleton min-h-[350px] w-full"></div>
+  </div>
+);

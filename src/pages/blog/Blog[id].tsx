@@ -22,15 +22,17 @@ const BlogDetails = () => {
       </>
     );
   }
-
   return (
     <>
       <div className="max-w-[1200px] mx-auto px-4 my-10">
         <div>
           <div className="relative">
             <img
-              src="https://blog.feedspot.com/wp-content/uploads/2018/06/uk-soap-making-copy.jpg"
-              alt="car!"
+              src={
+                data?.data?.featuredImage ??
+                "https://blog.feedspot.com/wp-content/uploads/2018/06/uk-soap-making-copy.jpg"
+              }
+              alt="blog_image"
               className="w-full rounded-lg object-cover"
             />
             {/* Subtle Blended Gradient */}

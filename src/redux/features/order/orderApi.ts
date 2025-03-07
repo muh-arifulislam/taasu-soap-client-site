@@ -11,8 +11,8 @@ const orderApi = baseApi.injectEndpoints({
       invalidatesTags: ["orders"],
     }),
     getMyOrders: builder.query({
-      query: () => ({
-        url: "/orders/me",
+      query: (status: string) => ({
+        url: `/orders/me?status=${status}`,
         method: "GET",
       }),
       providesTags: ["orders"],

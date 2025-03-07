@@ -15,4 +15,5 @@ export type TProduct = {
     direction: string;
     warnings: string;
   };
+  images: string[];
 };

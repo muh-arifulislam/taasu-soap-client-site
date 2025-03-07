@@ -76,12 +76,7 @@ const RichDataComponent = ({ htmlContent }: { htmlContent: string }) => {
   For more soap-making tips and recipes, check out our
   <a href="/soap-making-guide" style="color: blue; text-decoration: underline;">Soap Making Guide</a>.
 </p>
-
-<img
-  src="https://via.placeholder.com/800x400"
-  alt="Handmade Soap Examples"
-  style="width: 100%; max-width: 800px; height: auto; margin: 1rem 0;"
-/>`;
+`;
 
   return (
     <div
