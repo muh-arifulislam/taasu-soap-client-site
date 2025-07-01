@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useGetBlogByIdQuery } from "../../redux/features/blog/blogApi";
 import { IBlog } from "../../types/blog";
 import RichDataComponent from "../../components/ui/RichDataComponent";
+import PageHeader from "../../components/ui/PageHeader";
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -23,8 +24,20 @@ const BlogDetails = () => {
     );
   }
   return (
-    <>
-      <div className="max-w-[1200px] mx-auto px-4 my-10">
+    <div>
+      <PageHeader
+        breadcrumbs={[
+          {
+            label: "Home",
+            url: "/",
+          },
+          {
+            label: "Blogs",
+            url: "/blogs",
+          },
+        ]}
+      />
+      <div className="container mx-auto px-4 py-8">
         <div>
           <div className="relative">
             <img
@@ -71,7 +84,7 @@ const BlogDetails = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

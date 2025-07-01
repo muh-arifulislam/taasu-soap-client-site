@@ -42,11 +42,14 @@ const bundleProducts = [
 
 const OtherProducts = () => {
   return (
-    <section className="lg:mx-[100px] mx-[20px] grid lg:grid-cols-3 grid-cols-1 lg:gap-[20px] gap-[30px]">
-      {bundleProducts.map((item, idx: number) => (
-        <ProductAlt data={item} key={idx} />
-      ))}
-    </section>
+    <div>
+      <h2 className="text-3xl font-semibold text-center">Bundle Products</h2>
+      <section className="container mx-auto px-4 py-10 grid lg:grid-cols-3 grid-cols-1 lg:gap-[20px] gap-[30px]">
+        {bundleProducts.map((item, idx: number) => (
+          <ProductAlt data={item} key={idx} />
+        ))}
+      </section>
+    </div>
   );
 };
 

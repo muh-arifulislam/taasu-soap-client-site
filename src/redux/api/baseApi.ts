@@ -6,7 +6,7 @@ import { RootState } from "../store";
 //http://localhost:5000/api/v1
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "https://taasu-soap-backend.vercel.app/api/v1",
+  baseUrl: "http://localhost:5000/api/v1",
   credentials: "include",
   prepareHeaders: (headers: Headers, { getState }) => {
     const token = (getState() as RootState).auth.token;

@@ -12,7 +12,7 @@ const Products = () => {
     if (data?.success) {
       const selectedProducts = data.data.filter(
         (item: TProduct, idx: number) => {
-          if (idx < 3) {
+          if (idx < 4) {
             return item;
           }
         }
@@ -22,13 +22,24 @@ const Products = () => {
   }, [isLoading, data]);
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[40px] lg:px-[100px] px-[30px]">
-      {isLoading && <LoadingComponent />}
-      {products.length &&
-        products.map((product: TProduct) => (
-          <Product data={product} key={product?._id} />
-        ))}
-    </section>
+    <div className="container mx-auto px-4 py-10">
+      <div className="mb-12">
+        <h2 className="text-3xl font-semibold text-center">
+          Our Latest Products
+        </h2>
+        <h4 className="text-lg text-center text-gray-600 mb-4">
+          Discover our newest and most popular products, carefully selected for
+          you.
+        </h4>
+      </div>
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[40px]">
+        {isLoading && <LoadingComponent />}
+        {products.length &&
+          products.map((product: TProduct) => (
+            <Product data={product} key={product?._id} />
+          ))}
+      </section>
+    </div>
   );
 };
 

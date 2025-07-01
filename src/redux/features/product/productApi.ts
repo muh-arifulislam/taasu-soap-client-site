@@ -9,7 +9,13 @@ const bookApi = baseApi.injectEndpoints({
       }),
       providesTags: ["product"],
     }),
+    getProductById: builder.query({
+      query: (id: string) => ({
+        url: `/product/${id}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useGetAllProductsQuery } = bookApi;
+export const { useGetAllProductsQuery, useGetProductByIdQuery } = bookApi;

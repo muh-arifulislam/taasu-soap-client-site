@@ -15,6 +15,7 @@ import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 
 import auth from "../../firebase.init";
 import { toast } from "sonner";
+import { ExternalLink, SquareArrowOutUpRight } from "lucide-react";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -45,7 +46,13 @@ const Login = () => {
       navigate("/shop");
       toast.success("login success", { id: toastId });
     } else if (response?.error) {
-      toast.error(response?.error?.data?.message, { id: toastId });
+      // eslint-disable-next-line no-unsafe-optional-chaining
+      if ("data" in response?.error) {
+        const errorData = response.error.data as { message: string };
+        toast.error(errorData.message, { id: toastId });
+      } else {
+        toast.error("Failed to login", { id: toastId });
+      }
     }
   };
 
@@ -65,7 +72,7 @@ const Login = () => {
       };
 
       const response = await handleLoginWithGoogle(payload);
-
+      console.log(response);
       if (response?.data?.success) {
         const { accessToken } = response.data.data;
         const decoded = jwtDecode(accessToken);
@@ -168,11 +175,20 @@ const Login = () => {
                         />
                       </label>
                     </div>
-                    <div>
+                    <div className="space-y-4">
                       <button type="submit" className="btn w-full">
                         <MdOutlinePersonAddAlt size={20} />
                         Login
                       </button>
+                      <div className="divider">OR</div>
+                      <a
+                        target="_blank"
+                        href="https://dev-arifulislam.netlify.app/"
+                        className="btn btn-outline w-full"
+                      >
+                        <ExternalLink />
+                        Admin Dashboard
+                      </a>
                     </div>
                   </form>
 

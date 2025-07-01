@@ -13,6 +13,7 @@ import StripeCheckoutForm from "./StripeCheckoutForm";
 import { loadStripe, StripeElementsOptions } from "@stripe/stripe-js";
 
 import { TbTruckDelivery } from "react-icons/tb";
+import useCalculateSubtotal from "../../utils/calculateSubtotal";
 
 const steps = [
   {
@@ -57,6 +58,8 @@ const Payment = () => {
   const session = sessionStorage.getItem("shopping_session");
   const sessionData = session ? JSON.parse(session) : null;
 
+  const subtotal = useCalculateSubtotal();
+
   const dispatch = useAppDispatch();
 
   const [handlePlaceOrder] = usePlaceOrderMutation();
@@ -92,11 +95,14 @@ const Payment = () => {
   const handleStripePayment = async () => {
     const toastId = toast.loading("Your order is placing...");
 
-    fetch("http://localhost:5000/api/v1/orders/place-order/stripe", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: session,
-    })
+    fetch(
+      "https://taasu-soap-backend.vercel.app/api/v1/orders/place-order/stripe",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: session,
+      }
+    )
       .then((res) => res.json())
       .then(async (data) => {
         if (data.success) {
@@ -219,7 +225,7 @@ const Payment = () => {
               <div className="border p-4">
                 <div className="flex justify-between items-center">
                   <h4 className="text-md font-semibold">Subtotal</h4>
-                  <p>$200.0</p>
+                  <p>${subtotal}</p>
                 </div>
                 <div className="divider" />
                 <div className="mb-4">
@@ -241,16 +247,16 @@ const Payment = () => {
                 </div>
                 <div className="flex justify-between items-center mb-4">
                   <p>Delivery Charge</p>
-                  <p>$800</p>
+                  <p>$0.00</p>
                 </div>
                 <div className="flex justify-between items-center">
                   <p>Discount</p>
-                  <p>$800</p>
+                  <p>$0.00</p>
                 </div>
                 <div className="divider" />
                 <div className="flex justify-between items-center font-bold mb-4">
                   <p className="">Grant Total</p>
-                  <p>$800</p>
+                  <p>${subtotal}</p>
                 </div>
               </div>
             </div>

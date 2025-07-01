@@ -38,11 +38,11 @@ const ManageAddresses = () => {
     <>
       <div className="px-4">
         <div>
-          <div className=" space-x-4">
+          <div className="space-x-4">
             <button className="">
               <label
                 htmlFor="add_new_address_modal"
-                className="btn btn-primary btn-wide"
+                className="btn btn-primary md:btn-wide"
               >
                 <FaPlus />
                 Add new Address

@@ -2,7 +2,7 @@ import image from "../../assets/icons/content-box-bg.svg";
 const Subscribe = () => {
   return (
     <div
-      className="mx-4 md:mx-[100px] my-12 p-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0"
+      className=" my-12 p-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0"
       style={{ background: `url(${image})` }}
     >
       <h2 className="font-secondary text-primary text-xl">

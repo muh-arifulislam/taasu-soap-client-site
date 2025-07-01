@@ -16,4 +16,5 @@ export type TProduct = {
     warnings: string;
   };
   images: string[];
+  rating?: number;
 };

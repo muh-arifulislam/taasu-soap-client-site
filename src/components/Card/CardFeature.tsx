@@ -20,12 +20,12 @@ const CardFeature: React.FC<CardFeatureProps> = ({
 }) => {
   return (
     <div
-      className={`mt-[20px] pt-[30px] pb-[20px] px-[20px] flex flex-col items-center justify-between ${className}`}
+      className={`mt-[20px] pt-[30px] pb-[20px] px-[20px] flex flex-col items-center justify-between text-gray-900 dark:bg-gray-900 dark:text-white ${className}`}
       style={
         image ? { background: `url(${image})`, backgroundSize: "cover" } : {}
       }
     >
-      <div>
+      <div className="dark:bg-transparent rounded p-4 w-full">
         <h4 className="mb-[10px] font-secondary text-xl leading-10">{title}</h4>
         <p className="text-xl mb-[20px]">{description}</p>
       </div>

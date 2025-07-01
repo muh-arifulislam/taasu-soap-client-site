@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import ingredientsImage from "../../assets/icons/lsc-usp-icons.svg";
 
 import { Link, useParams } from "react-router-dom";
-import { TProduct } from "../../types";
-import Breadcrum from "../../components/Breadcrum/Breadcrum";
 import ProductSlider from "../../lib/Slider/ProductSlider";
 import ThumbImagesSkeleton from "../../components/Skeleton/ThumbImagesSkeleton";
 import { FaStar } from "react-icons/fa";
@@ -16,43 +14,102 @@ import ReviewSlider from "../../components/Slider/ReviewSlider";
 import soapImg1 from "../../assets/images/Org-Home-1.jpg";
 import soapImg2 from "../../assets/images/Org-Home-2.jpg";
 import soapImg3 from "../../assets/images/Org-Home-3.jpg";
+import { useGetProductByIdQuery } from "../../redux/features/product/productApi";
+import { TProduct } from "../../types";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
+import { addToCart, selectCart } from "../../redux/features/cart/cartSlice";
+import PageHeader from "../../components/ui/PageHeader";
 
 const ProductDetails = () => {
   const [reviews, setReviews] = useState(5);
   const { productId } = useParams();
-  const productNameConv = productId?.replaceAll("-", " ");
-  const [product, setProduct] = useState<TProduct | null>();
   const [orderQuantity, setOrderQuantity] = useState(1);
   const [active, setActive] = useState("ingredients");
-  useEffect(() => {
-    fetch("../products.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const result = data.find((d: TProduct) => d.name === productNameConv);
-        setProduct(result);
-      });
-  }, []);
+
+  const { data, isLoading } = useGetProductByIdQuery(productId as string);
 
   const images = [soapImg1, soapImg2, soapImg3];
 
-  // const images = null;
+  const dispatch = useAppDispatch();
+
+  const cartProducts = useAppSelector(selectCart);
+
+  const [isProductInCart, setIsProductInCart] = useState(false);
+
+  const handleAddToBasket = (payload: TProduct, quantity: number) => {
+    dispatch(
+      addToCart({
+        product: payload._id,
+        quantity: quantity < 1 ? 1 : quantity,
+        price: payload.price,
+        image: "",
+      })
+    );
+  };
+
+  useEffect(() => {
+    if (cartProducts.length > 0 && data?.success) {
+      const findItemInCart = cartProducts.find(
+        (item) => item.product === data?.data?._id
+      );
+      if (findItemInCart) {
+        setIsProductInCart(true);
+      } else {
+        setIsProductInCart(false);
+      }
+    }
+  }, [handleAddToBasket]);
+
+  if (isLoading) {
+    return (
+      <div className="container mx-auto px-5 my-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div className="w-full">
+            <div className="skeleton h-[300px] w-[90%] mx-auto"></div>
+            <div className="flex items-center justify-center gap-4 my-5">
+              <div className="skeleton h-24 w-full"></div>
+              <div className="skeleton h-24 w-full"></div>
+              <div className="skeleton h-24 w-full"></div>
+              <div className="skeleton h-24 w-full"></div>
+            </div>
+          </div>
+          <div className="flex flex-col justify-around">
+            <div className="skeleton h-6 w-full mb-5"></div>
+            <div className="flex items-center gap-4 mb-5">
+              <div className="skeleton h-4 w-36"></div>
+              <div className="skeleton h-4 w-36"></div>
+              <div className="skeleton h-4 w-36"></div>
+            </div>
+            <div className="flex items-center gap-4 mb-5">
+              <div className="skeleton h-36 w-36"></div>
+              <div className="skeleton h-36 w-36"></div>
+            </div>
+            <div className="skeleton h-4 w-full mb-2"></div>
+            <div className="skeleton h-4 w-full mb-2"></div>
+            <div className="skeleton h-4 w-full mb-2"></div>
+            <div className="skeleton h-4 w-full mb-2"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
-      {product && (
+      {data.data && (
         <div className="">
-          <Breadcrum
-            items={[
+          <PageHeader
+            breadcrumbs={[
               {
                 label: "Home",
-                path: "/",
+                url: "/",
               },
               {
                 label: "Shop",
-                path: "/shop",
+                url: "/shop",
               },
               {
-                label: product?.name,
-                path: "",
+                label: data?.data?.name ?? "Product Name",
               },
             ]}
           />
@@ -68,19 +125,17 @@ const ProductDetails = () => {
             </div>
             <div>
               <h1 className="font-secondary text-primary font-bold leading-[2.5rem]  sm:leading-[4rem] text-xl sm:text-[1.6rem] mb-2">
-                {product.name}
+                {data?.data?.name}
               </h1>
               <div className="flex items-center mb-4 gap-3">
                 <p className="text-3xl font-semibold">
-                  ${product.price}
+                  ${data?.data?.price}
                   <small className="text-sm opacity-60"> inc.VAT</small>
                 </p>
                 <span className="text-primary opacity-80">
-                  <small className="">SKU: {product.productId}</small>
+                  <small className="">SKU: {data?.data?.productId}</small>
                 </span>
-                <button className="px-3 py-1 border rounded">
-                  {product.quantity ? "In stock" : "Stock Out"}
-                </button>
+                <button className="px-3 py-1 border rounded">In stock</button>
               </div>
 
               <div className="flex gap-[5px]">
@@ -95,19 +150,27 @@ const ProductDetails = () => {
                     }
                   />
                 </span>
-                <button className="bg-primary text-white px-[30px] font-bold text-xl rounded-md">
-                  Add to basket
+                <button
+                  onClick={() => {
+                    handleAddToBasket(data.data, orderQuantity);
+                  }}
+                  className={`btn bg-primary text-white px-[30px] font-bold text-xl rounded-md ${
+                    isProductInCart ? "btn-disabled" : "btn-primary"
+                  }`}
+                  disabled={isProductInCart}
+                >
+                  {isProductInCart ? "Already added" : "Add to basket"}
                 </button>
               </div>
 
               <img className="mt-[40px]" src={ingredientsImage} alt="" />
               <div className="my-5">
-                {product.descriptions?.map((des, idx) => (
+                {data?.data?.descriptions?.map((des: string, idx: number) => (
                   <h2 key={idx} className="text-xl mb-[20px]">
                     {des}
                   </h2>
                 ))}
-                {product.advantages?.map((adv, idx) => (
+                {data?.data?.advantages?.map((adv: string, idx: number) => (
                   <p key={idx} className="text-xl mb-[20px]">
                     <span className="mr-[5px]">✓</span>
                     {adv}
@@ -178,9 +241,13 @@ const ProductDetails = () => {
                 id="ingredients"
                 className="hidden"
               >
-                {product.ingredients?.map((ingredient) => (
-                  <p className="text-xl mb-[20px]">{ingredient}</p>
-                ))}
+                {data?.data?.ingredients?.map(
+                  (ingredient: string, idx: number) => (
+                    <p key={idx} className="text-xl mb-[20px]">
+                      {ingredient}
+                    </p>
+                  )
+                )}
               </div>
               <div
                 style={
@@ -196,19 +263,19 @@ const ProductDetails = () => {
                     <tbody>
                       <tr className="border-b-2 border-black">
                         <td className="border-r-2 border-black">Weight</td>
-                        <td>{product.addInformation?.weight}</td>
+                        <td>{data?.data?.addInformation?.weight}</td>
                       </tr>
                       <tr className="border-b-2 border-black">
                         <td className="border-r-2 border-black">Dimensions</td>
-                        <td>{product.addInformation?.dimension}</td>
+                        <td>{data?.data?.addInformation?.dimension}</td>
                       </tr>
                       <tr className="border-b-2 border-black">
                         <td className="border-r-2 border-black">Directions</td>
-                        <td>{product.addInformation?.direction}</td>
+                        <td>{data?.data?.addInformation?.direction}</td>
                       </tr>
                       <tr>
                         <td className="border-r-2 border-black">Warning</td>
-                        <td>{product.addInformation?.warnings}</td>
+                        <td>{data?.data?.addInformation?.warnings}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -278,8 +345,8 @@ const ProductDetails = () => {
                     </div>
                   </div>
                   <div className="my-6 grid grid-cols-1 gap-6">
-                    {[...Array(reviews)].map(() => (
-                      <ProductReviewLongCard />
+                    {[...Array(reviews)].map((idx: number) => (
+                      <ProductReviewLongCard key={idx} />
                     ))}
                   </div>
                   <div className="flex justify-between items-center">

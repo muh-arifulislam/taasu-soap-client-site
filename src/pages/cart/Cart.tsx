@@ -69,7 +69,7 @@ const Cart = () => {
           <div className="border p-4">
             <div className="flex justify-between items-center">
               <h4 className="text-md font-semibold">Subtotal</h4>
-              <p>${subtotal?.toFixed(2)}</p>
+              <p>${subtotal}</p>
             </div>
             <div className="divider" />
             <div className="mb-4">
@@ -100,7 +100,7 @@ const Cart = () => {
             <div className="divider" />
             <div className="flex justify-between items-center font-bold mb-4">
               <p className="">Grant Total</p>
-              <p>${subtotal?.toFixed(2)}</p>
+              <p>${subtotal}</p>
             </div>
             <div>
               <button
