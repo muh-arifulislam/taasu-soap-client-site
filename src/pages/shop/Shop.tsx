@@ -7,7 +7,7 @@ import ProductFilterSidebar from "./ProductFilterSidebar";
 import { Funnel, LayoutGrid, List } from "lucide-react";
 
 const Shop = () => {
-  const [isGrid, setIsGrid] = useState(true);
+  const [isGrid, setIsGrid] = useState(false);
 
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(9);
@@ -35,7 +35,7 @@ const Shop = () => {
           },
         ]}
       />
-      <div className="relative py-8 sm:py-[60px] bg-secondary bottom-edge-secondary">
+      <div className="relative py-8 sm:py-[60px] bg-secondary dark:bg-slate-400/30 bottom-edge-secondary dark:text-white/90">
         <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-[50px] text-center">
           <h2 className="font-secondary text-xl sm:text-[2.5rem] font-caveat-brush">
             Special Offers!
@@ -109,7 +109,7 @@ const Shop = () => {
               <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-2 justify-center mt-8">
                 <div className="flex justify-center items-center gap-2">
                   <button
-                    className="btn btn-sm"
+                    className="btn btn-sm dark:btn-primary"
                     disabled={page === 1}
                     onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
                   >
@@ -119,7 +119,7 @@ const Shop = () => {
                     Page {page} of {data.meta.totalPages}
                   </span>
                   <button
-                    className="btn btn-sm"
+                    className="btn btn-sm dark:btn-primary"
                     disabled={page === data.meta.totalPages}
                     onClick={() =>
                       setPage((prev) =>
@@ -167,7 +167,7 @@ const ContentComponent = ({ data, isGrid }: { data: []; isGrid: boolean }) => (
 );
 
 const LoadingComponent = () => (
-  <div className="grid lg:grid-cols-3 grid-cols-2 gap-[10px]">
+  <div className={`grid lg:grid-cols-3 grid-cols-1 gap-[10px]`}>
     <div className="skeleton min-h-[350px] w-full"></div>
     <div className="skeleton min-h-[350px] w-full"></div>
     <div className="skeleton min-h-[350px] w-full"></div>

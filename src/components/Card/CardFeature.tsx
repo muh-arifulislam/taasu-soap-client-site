@@ -26,8 +26,10 @@ const CardFeature: React.FC<CardFeatureProps> = ({
       }
     >
       <div className="dark:bg-transparent rounded p-4 w-full">
-        <h4 className="mb-[10px] font-secondary text-xl leading-10">{title}</h4>
-        <p className="text-xl mb-[20px]">{description}</p>
+        <h4 className="mb-[10px] font-secondary text-xl leading-10 dark:text-slate-900">
+          {title}
+        </h4>
+        <p className="text-xl mb-[20px] dark:text-slate-800">{description}</p>
       </div>
       {buttonText && (
         <Button variant="primary" onClick={onButtonClick}>

@@ -105,7 +105,7 @@ export default function Navbar() {
             {/* Logo */}
             <a
               href="/"
-              className="text-xl font-bold text-primary dark:text-orange-300"
+              className="text-xl font-bold text-primary dark:text-white/90"
             >
               Taasu Soap
             </a>
@@ -122,7 +122,7 @@ export default function Navbar() {
                   <NavLink
                     to={item.href}
                     className={({ isActive }) =>
-                      `text-lg hover:text-amber-400 font-semibold ${
+                      `text-lg hover:text-amber-400 font-semibold dark:text-white/90 ${
                         isActive ? "text-amber-600" : "text-slate-800"
                       }`
                     }

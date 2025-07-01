@@ -86,7 +86,7 @@ const ProductCard = ({ product }: { product: TProduct }) => {
   }, [handleAddToCart]);
 
   return (
-    <div className="card bg-base-100  shadow-sm border rounded-xl ">
+    <div className="card bg-base-100 dark:bg-slate-400/10  shadow-sm border dark:border-slate-400/10 rounded-xl ">
       <figure className="px-10 pt-10">
         <img
           src={
@@ -97,12 +97,14 @@ const ProductCard = ({ product }: { product: TProduct }) => {
       </figure>
       <div className="card-body items-center text-center">
         <NavLink to={`/shop/${product._id}`}>
-          <h2 className="font-bold text-slate-600">{product?.name}</h2>
+          <h2 className="font-bold text-slate-600 dark:text-white/70">
+            {product?.name}
+          </h2>
         </NavLink>
         <h4 className="text-xl font-semibold">
           {renderRatingIcons(product?.rating ?? 5)}
         </h4>
-        <h4 className="mb-[9px] text-xl font-bold text-slate-900">
+        <h4 className="mb-[9px] text-xl font-bold text-slate-900 dark:text-white/90">
           ${product?.price}
         </h4>
 
@@ -111,7 +113,7 @@ const ProductCard = ({ product }: { product: TProduct }) => {
             onClick={() => {
               handleAddToCart(product);
             }}
-            className={`btn btn-primary text-white w-full py-[10px] rounded-md ${
+            className={`btn btn-primary dark:bg-slate-900 dark:hover:bg-slate-800 text-white w-full py-[10px] rounded-md dark:border-slate-400/10 dark:text-white/80 ${
               isProductInCart ? "btn-disabled" : ""
             }`}
           >

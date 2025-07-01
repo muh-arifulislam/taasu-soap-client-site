@@ -66,17 +66,20 @@ const ProductFilterSidebar = ({
   };
 
   return (
-    <aside className="container mx-auto px-4 py-8 bg-white border shadow-sm rounded-xl">
+    <aside className="container mx-auto px-4 py-8 bg-white dark:bg-slate-400/10 border dark:border-slate-400/10 shadow-sm rounded-xl">
       <h2 className="text-xl font-semibold mb-4">Filter Products</h2>
 
       {Object.entries(FILTER_OPTIONS).map(([key, values]) => (
         <React.Fragment key={key}>
           <div className="mb-4">
-            <h3 className="capitalize font-medium text-gray-700 mb-2">
+            <h3 className="capitalize font-medium text-gray-700 mb-2 dark:text-white/90">
               {key.replace(/([A-Z])/g, " $1")}
             </h3>
             {(values as string[]).map((val) => (
-              <label key={val} className="flex items-center mb-1">
+              <label
+                key={val}
+                className="flex items-center mb-1 dark:text-white/80"
+              >
                 <input
                   type="checkbox"
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any

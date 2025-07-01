@@ -6,15 +6,15 @@ import contentImgNude from "../../assets/icons/content-box-bg-nude.svg";
 
 const Testimonial = () => {
   return (
-    <section className="container mx-auto px-4 py-10 text-center bg-white dark:bg-gray-900 transition-colors duration-300 rounded-xl">
-      <h1 className="mb-[20px] font-secondary text-xl md:text-2xl leading-10 text-gray-900 dark:text-white">
+    <section className="container mx-auto px-4 py-10 text-center transition-colors duration-300 rounded-xl">
+      <h1 className="mb-[20px] font-secondary text-xl md:text-2xl leading-10 text-gray-900 dark:text-white/90">
         Simple ingredients you understand…
       </h1>
       <h4 className="text-[20px] mb-[20px] font-bold text-gray-800 dark:text-gray-200">
         Vegan, cruelty-free and hand-crafted in the UK, our soaps are made using
         the finest natural ingredients, all ethically sourced.
       </h4>
-      <p className="text-[18px] mb-[20px] text-gray-700 dark:text-gray-300">
+      <p className="text-[18px] mb-[20px] text-gray-700 dark:text-gray-400">
         Our luxurious range of natural handmade soaps are made using the finest,
         pure ingredients, including only pure essential oils to create our
         uplifting, nurturing scents. Our natural soaps and all-natural skincare
