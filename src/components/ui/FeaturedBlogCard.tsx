@@ -27,15 +27,11 @@ const FeaturedBlogCard = ({ data }: { data: IBlog }) => {
                 <div className="flex items-center gap-2">
                   <div className="avatar placeholder">
                     <div className="bg-neutral text-neutral-content w-10 rounded-full">
-                      <span className="text-xl">
-                        {data?.user?.firstName[0]}
-                      </span>
+                      <span className="text-xl">A</span>
                     </div>
                   </div>
                   <div>
-                    <h4 className="font-bold text-md text-slate-200">
-                      {data?.user?.firstName + " " + data?.user?.lastName}
-                    </h4>
+                    <h4 className="font-bold text-md text-slate-200">Admin</h4>
                   </div>
                 </div>
                 <div className="flex items-center justify-center gap-2">

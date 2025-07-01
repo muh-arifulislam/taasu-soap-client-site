@@ -60,18 +60,12 @@ const BlogDetails = () => {
                 <div className="hidden sm:flex items-center gap-2">
                   <div className="avatar placeholder">
                     <div className="bg-neutral text-neutral-content w-12 rounded-full">
-                      <span className="text-xl">
-                        {data?.data?.user?.firstName[0]}
-                      </span>
+                      <span className="text-xl">A</span>
                     </div>
                   </div>
                   <div>
                     <h6 className="text-xs text-slate-200">Written by</h6>
-                    <h4 className="font-bold text-md">
-                      {data?.data?.user?.firstName +
-                        " " +
-                        data?.data?.user?.lastName}
-                    </h4>
+                    <h4 className="font-bold text-md">Admin</h4>
                   </div>
                 </div>
               </div>

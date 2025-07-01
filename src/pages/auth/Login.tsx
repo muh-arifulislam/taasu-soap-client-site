@@ -15,7 +15,7 @@ import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 
 import auth from "../../firebase.init";
 import { toast } from "sonner";
-import { ExternalLink, SquareArrowOutUpRight } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -183,7 +183,7 @@ const Login = () => {
                       <div className="divider">OR</div>
                       <a
                         target="_blank"
-                        href="https://dev-arifulislam.netlify.app/"
+                        href="https://admin-taasu-soap.netlify.app/"
                         className="btn btn-outline w-full"
                       >
                         <ExternalLink />
@@ -191,23 +191,6 @@ const Login = () => {
                       </a>
                     </div>
                   </form>
-
-                  {/* <p className="mt-6 text-xs text-gray-600 text-center">
-                    I agree to abide by templatana's{" "}
-                    <a
-                      href="#"
-                      className="border-b border-gray-500 border-dotted"
-                    >
-                      Terms of Service
-                    </a>{" "}
-                    and its{" "}
-                    <a
-                      href="#"
-                      className="border-b border-gray-500 border-dotted"
-                    >
-                      Privacy Policy
-                    </a>
-                  </p> */}
                 </div>
                 <p className="text-md text-center my-4 flex items-center justify-center">
                   Don't have an account?

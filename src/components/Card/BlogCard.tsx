@@ -28,13 +28,11 @@ const BlogCard = ({ data }: { data: IBlog }) => {
           <div className="flex items-center gap-2">
             <div className="avatar placeholder">
               <div className="bg-neutral text-neutral-content w-10 rounded-full">
-                <span className="text-xl">{data?.user?.firstName[0]}</span>
+                <span className="text-xl">A</span>
               </div>
             </div>
             <div>
-              <h4 className="font-bold text-md">
-                {data?.user?.firstName + " " + data?.user?.lastName}
-              </h4>
+              <h4 className="font-bold text-md">Admin</h4>
               <h4 className="font-medium text-sm text-slate-500">
                 {dayjs(data?.createdAt).fromNow()}
               </h4>
