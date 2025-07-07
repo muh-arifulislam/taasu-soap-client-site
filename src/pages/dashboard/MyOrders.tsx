@@ -23,16 +23,14 @@ const MyOrders = () => {
     );
   }
 
-  const { data: orders } = data;
-
   return (
     <div className="">
       <div>
         {cartItems?.length > 0 && (
           <div className="flex flex-col gap-4 sm:flex-row items-center justify-between bg-white p-4 shadow rounded border-green-500 border-t-2 mb-4">
             <div>
-              You have {cartItems.length} items selected on the cart. Subtotal $
-              {subtotal}
+              You have {cartItems?.length} items selected on the cart. Subtotal
+              ${subtotal}
             </div>
             <div>
               <NavLink to={"/cart"}>
@@ -69,12 +67,12 @@ const MyOrders = () => {
           </div>
         </div>
         <div className="bg-white p-4 shadow rounded">
-          {orders.map((order: TOrder) => (
+          {data?.data?.map((order: TOrder) => (
             <div key={order._id}>
               <div className="mb-4 ">
                 <p>
                   Your Order ID:{" "}
-                  <span className="text-green-600">{order?._id}</span>
+                  <span className="text-green-600">{order?.orderId}</span>
                   <span className=""> ({order?.items?.length} items)</span>
                 </p>
               </div>
@@ -83,7 +81,7 @@ const MyOrders = () => {
                   {order?.orderStatus}
                 </span>
                 <NavLink
-                  to={`/ordertrack?orderId=${order?._id}`}
+                  to={`/ordertrack?orderId=${order?.orderId}`}
                   className="px-3 py-1 bg-blue-500 text-white rounded flex items-center gap-2"
                 >
                   Track My Order

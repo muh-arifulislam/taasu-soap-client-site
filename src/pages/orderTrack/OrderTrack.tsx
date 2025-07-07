@@ -115,7 +115,7 @@ const OrderTrack = () => {
           </div>
           <div className="mx-6 bg-white -mt-14 p-6 border rounded">
             <h3 className="text-md sm:text-xl font-bold text-primary">
-              Order No: 47148315767262
+              Order No: #{order?.orderId}
             </h3>
             <div className="divider" />
 
