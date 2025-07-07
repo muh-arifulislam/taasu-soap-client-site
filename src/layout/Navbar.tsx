@@ -84,9 +84,9 @@ export default function Navbar() {
         </div>
       </div>
       <div
-        className={`h-[60px] md:h-[80px] sticky top-0 left-0 right-0 w-full z-50 bg-base-100 dark:bg-slate-900 transition-all duration-300 flex items-center ${
+        className={`h-[60px] md:h-[80px] sticky top-0 left-0 right-0 w-full z-50 bg-base-100 dark:bg-slate-900 transition-all duration-300 flex items-center border-b border-slate-300 ${
           isScrolled
-            ? "shadow-md dark:shadow-slate-800/40 h-[60px] md:h-[60px]"
+            ? "shadow dark:shadow-slate-800/40 h-[60px] md:h-[60px] border-b border-slate-300"
             : ""
         }`}
       >
