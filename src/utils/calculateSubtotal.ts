@@ -9,7 +9,7 @@ const useCalculateSubtotal = () => {
     0
   );
 
-  return total;
+  return total.toFixed(2);
 };
 
 export default useCalculateSubtotal;

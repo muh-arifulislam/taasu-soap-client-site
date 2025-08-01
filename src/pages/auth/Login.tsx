@@ -15,6 +15,7 @@ import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 
 import auth from "../../firebase.init";
 import { toast } from "sonner";
+import { ExternalLink } from "lucide-react";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -29,6 +30,8 @@ const Login = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onSubmit = async (data: any) => {
+    const toastId = toast.loading("Signing");
+
     const response = await handleLogin(data);
     if (response?.data?.success) {
       const { accessToken } = response.data.data;
@@ -41,6 +44,15 @@ const Login = () => {
         })
       );
       navigate("/shop");
+      toast.success("login success", { id: toastId });
+    } else if (response?.error) {
+      // eslint-disable-next-line no-unsafe-optional-chaining
+      if ("data" in response?.error) {
+        const errorData = response.error.data as { message: string };
+        toast.error(errorData.message, { id: toastId });
+      } else {
+        toast.error("Failed to login", { id: toastId });
+      }
     }
   };
 
@@ -60,7 +72,7 @@ const Login = () => {
       };
 
       const response = await handleLoginWithGoogle(payload);
-
+      console.log(response);
       if (response?.data?.success) {
         const { accessToken } = response.data.data;
         const decoded = jwtDecode(accessToken);
@@ -93,13 +105,6 @@ const Login = () => {
             />
           </div>
           <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
-            <div className="block sm:hidden">
-              <img
-                src="https://storage.googleapis.com/devitary-image-host.appspot.com/15846435184459982716-LogoMakr_7POjrN.png"
-                className="w-32 mx-auto"
-                alt="Logo"
-              />
-            </div>
             <div className="flex flex-col items-center">
               <h1 className="text-2xl xl:text-3xl font-extrabold">Sign In</h1>
               <div className="w-full flex-1 mt-8">
@@ -163,30 +168,22 @@ const Login = () => {
                         />
                       </label>
                     </div>
-                    <div>
+                    <div className="space-y-4">
                       <button type="submit" className="btn w-full">
                         <MdOutlinePersonAddAlt size={20} />
                         Login
                       </button>
+                      <div className="divider">OR</div>
+                      <a
+                        target="_blank"
+                        href="https://admin-taasu-soap.netlify.app/"
+                        className="btn btn-outline w-full"
+                      >
+                        <ExternalLink />
+                        Admin Dashboard
+                      </a>
                     </div>
                   </form>
-
-                  {/* <p className="mt-6 text-xs text-gray-600 text-center">
-                    I agree to abide by templatana's{" "}
-                    <a
-                      href="#"
-                      className="border-b border-gray-500 border-dotted"
-                    >
-                      Terms of Service
-                    </a>{" "}
-                    and its{" "}
-                    <a
-                      href="#"
-                      className="border-b border-gray-500 border-dotted"
-                    >
-                      Privacy Policy
-                    </a>
-                  </p> */}
                 </div>
                 <p className="text-md text-center my-4 flex items-center justify-center">
                   Don't have an account?

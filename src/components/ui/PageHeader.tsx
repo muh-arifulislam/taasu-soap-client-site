@@ -1,45 +1,60 @@
-import divBg from "../../assets/icons/content-box-bg.svg";
-import Button from "../Button/Button";
+import { NavLink } from "react-router-dom";
+import bg from "../../assets/site-header.jpg";
 
-type PropsType = {
-  data: {
-    description: string;
-    image: string;
-    image2?: string;
-    title: string;
-    btn?: {
-      url: string;
-      title: string;
-    };
-  };
+// type Item = {
+//   label: string;
+//   url?: string;
+// };
+
+// type PropsType = {
+//   items: Item[];
+// };
+
+type BreadcrumbItem = {
+  label: string;
+  url?: string;
 };
 
-const PageHeader = ({ data }: PropsType) => {
+type PageHeaderProps = {
+  title?: string;
+  breadcrumbs: BreadcrumbItem[];
+};
+
+const PageHeader: React.FC<PageHeaderProps> = ({ title, breadcrumbs }) => {
   return (
-    <div
-      className="relative h-[70vh] sm:h-[80vh] bg-no-repeat bg-cover bg-center z-0"
-      style={{
-        backgroundImage: `url(${data.image})`,
-      }}
-    >
-      <div className="absolute top-0 left-0 w-full h-full bg-neutral opacity-30 -z-10"></div>
-      <div className="z-10 px-[10px] lg:px-[100px]  lg:py-[100px] py-[50px] grid  grid-cols-1 sm:grid-cols-2">
-        <div className="mx-6 sm:mx-0 flex flex-col justify-center">
-          <div
-            style={{ backgroundImage: `url(${divBg})` }}
-            className="px-[40px] pt-[40px] pb-[20px]"
-          >
-            <h2 className="font-secondary mb-[10px]">{data.title}</h2>
+    <div className="">
+      <div
+        className="bg-center bg-cover bg-no-repeat relative"
+        style={{ backgroundImage: `url(${bg})` }}
+      >
+        <div
+          className="absolute inset-0 bg-white opacity-30 pointer-events-none"
+          aria-hidden="true"
+        />
 
-            <h4 className="text-md sm:text-xl mb-[20px]">{data.description}</h4>
-
-            <div>{data.btn && <Button>{data?.btn?.title}</Button>}</div>
-          </div>
-        </div>
-        <div className="hidden sm:flex justify-center items-center">
-          {data.image2 && (
-            <img className="w-[80%] h-[80%]" src={data.image2} alt="" />
+        <div className="py-8 md:py-[65px] text-center relative z-10">
+          {title && (
+            <p className="text-3xl text-slate-900 font-bold">{title}</p>
           )}
+          <nav className="flex justify-center space-x-0 text-white text-sm mt-2">
+            {breadcrumbs.map((item, idx) => (
+              <span key={idx} className="flex items-center">
+                {item.url ? (
+                  <NavLink
+                    to={item.url}
+                    className="hover:underline text-slate-900"
+                  >
+                    {item.label}
+                  </NavLink>
+                ) : (
+                  <span>{item.label}</span>
+                )}
+                {idx < breadcrumbs.length - 1 && (
+                  <span className="mx-2 text-slate-900">/</span>
+                )}
+              </span>
+            ))}
+          </nav>
         </div>
       </div>
     </div>

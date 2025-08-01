@@ -11,8 +11,11 @@ const BlogCard = ({ data }: { data: IBlog }) => {
     <div className="card max-w-96 w-full">
       <figure>
         <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-          alt="car!"
+          src={
+            data.featuredImage ??
+            "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          }
+          alt="blog_image"
           className="rounded-[1rem]"
         />
       </figure>
@@ -25,13 +28,11 @@ const BlogCard = ({ data }: { data: IBlog }) => {
           <div className="flex items-center gap-2">
             <div className="avatar placeholder">
               <div className="bg-neutral text-neutral-content w-10 rounded-full">
-                <span className="text-xl">{data?.user?.firstName[0]}</span>
+                <span className="text-xl">A</span>
               </div>
             </div>
             <div>
-              <h4 className="font-bold text-md">
-                {data?.user?.firstName + " " + data?.user?.lastName}
-              </h4>
+              <h4 className="font-bold text-md">Admin</h4>
               <h4 className="font-medium text-sm text-slate-500">
                 {dayjs(data?.createdAt).fromNow()}
               </h4>

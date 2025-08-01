@@ -12,8 +12,7 @@ import EditAddressModal from "../../components/Modal/EditAddressModal";
 import { useState } from "react";
 
 const ManageAddresses = () => {
-  const { data, refetch, isLoading, isFetching } =
-    useGetAllAddressQuery(undefined);
+  const { data, refetch, isLoading } = useGetAllAddressQuery(undefined);
 
   const [handleDeleteAddress] = useDeleteAddressMutation();
 
@@ -39,11 +38,11 @@ const ManageAddresses = () => {
     <>
       <div className="px-4">
         <div>
-          <div className=" space-x-4">
+          <div className="space-x-4">
             <button className="">
               <label
                 htmlFor="add_new_address_modal"
-                className="btn btn-primary btn-wide"
+                className="btn btn-primary md:btn-wide"
               >
                 <FaPlus />
                 Add new Address

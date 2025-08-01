@@ -16,6 +16,11 @@ export const navLinksData: TNavLinkData[] = [
     icon: <BsBoxSeam />,
   },
   {
+    url: "/my-section/addresses",
+    label: "Manage Addresses",
+    icon: <GrLocation />,
+  },
+  {
     url: "/my-section/wishlists",
     label: "My Wishlists",
     icon: <FaRegHeart />,
@@ -24,11 +29,6 @@ export const navLinksData: TNavLinkData[] = [
     url: "/my-section/reviews",
     label: "My Reviews",
     icon: <FaRegStar />,
-  },
-  {
-    url: "/my-section/addresses",
-    label: "Manage Addresses",
-    icon: <GrLocation />,
   },
   {
     url: "/my-section/notifications",

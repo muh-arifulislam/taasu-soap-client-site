@@ -21,6 +21,7 @@ import Notifications from "../pages/dashboard/Notifications";
 import Settings from "../pages/dashboard/Settings";
 import OrderTrack from "../pages/orderTrack/OrderTrack";
 import BlogDetails from "../pages/blog/Blog[id]";
+import AboutUsPage from "../pages/about";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/about",
+        element: <AboutUsPage />,
       },
       {
         path: "/cart",

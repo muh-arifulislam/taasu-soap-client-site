@@ -1,4 +1,3 @@
-import Ingredients from "../../components/ui/Ingredients";
 import Subscribe from "../../components/ui/Subscribe";
 import OnlinePartner from "./OnlinePartner";
 import OtherProducts from "./OtherProducts";
@@ -10,12 +9,14 @@ const Home = () => {
   return (
     <>
       <TopBanner />
-      <Ingredients />
+      {/* <Ingredients /> */}
       <Products />
       <Testimonial></Testimonial>
       <OnlinePartner></OnlinePartner>
       <OtherProducts />
-      <Subscribe />
+      <div className="container mx-auto px-4 py-10">
+        <Subscribe />
+      </div>
     </>
   );
 };

@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useGetBlogByIdQuery } from "../../redux/features/blog/blogApi";
 import { IBlog } from "../../types/blog";
 import RichDataComponent from "../../components/ui/RichDataComponent";
+import PageHeader from "../../components/ui/PageHeader";
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -22,15 +23,29 @@ const BlogDetails = () => {
       </>
     );
   }
-
   return (
-    <>
-      <div className="max-w-[1200px] mx-auto px-4 my-10">
+    <div>
+      <PageHeader
+        breadcrumbs={[
+          {
+            label: "Home",
+            url: "/",
+          },
+          {
+            label: "Blogs",
+            url: "/blogs",
+          },
+        ]}
+      />
+      <div className="container mx-auto px-4 py-8">
         <div>
           <div className="relative">
             <img
-              src="https://blog.feedspot.com/wp-content/uploads/2018/06/uk-soap-making-copy.jpg"
-              alt="car!"
+              src={
+                data?.data?.featuredImage ??
+                "https://blog.feedspot.com/wp-content/uploads/2018/06/uk-soap-making-copy.jpg"
+              }
+              alt="blog_image"
               className="w-full rounded-lg object-cover"
             />
             {/* Subtle Blended Gradient */}
@@ -45,18 +60,12 @@ const BlogDetails = () => {
                 <div className="hidden sm:flex items-center gap-2">
                   <div className="avatar placeholder">
                     <div className="bg-neutral text-neutral-content w-12 rounded-full">
-                      <span className="text-xl">
-                        {data?.data?.user?.firstName[0]}
-                      </span>
+                      <span className="text-xl">A</span>
                     </div>
                   </div>
                   <div>
                     <h6 className="text-xs text-slate-200">Written by</h6>
-                    <h4 className="font-bold text-md">
-                      {data?.data?.user?.firstName +
-                        " " +
-                        data?.data?.user?.lastName}
-                    </h4>
+                    <h4 className="font-bold text-md">Admin</h4>
                   </div>
                 </div>
               </div>
@@ -69,7 +78,7 @@ const BlogDetails = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

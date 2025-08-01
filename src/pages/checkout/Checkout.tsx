@@ -6,6 +6,8 @@ import { useGetAllAddressQuery } from "../../redux/features/shippingAddress/ship
 import { TShippingAddress } from "../../types/shippingAddress";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AddAddress from "../../components/ui/AddAddress";
+import useCalculateSubtotal from "../../utils/calculateSubtotal";
 
 const steps = [
   {
@@ -57,6 +59,7 @@ const Checkout = () => {
     }
   };
 
+  const subtotal = useCalculateSubtotal();
   return (
     <div className="w-full max-w-6xl mx-auto px-4 my-10">
       <div className="mb-10">
@@ -89,117 +92,23 @@ const Checkout = () => {
             <button
               onClick={handleDeliverData}
               className="btn btn-wide text-lg bg-slate-950 text-slate-100 hover:bg-slate-700"
+              disabled={selectedShippingAddress === null}
             >
               Deliver Here
             </button>
           </div>
           <div className="divider"></div>
-          {/* <div>
+          <div>
             <div className="">
-              <div className="grid grid-cols-1 gap-4">
-                <div className="">
-                  <label className="form-control w-full">
-                    <div className="label">
-                      <span className="label-text">Street Address</span>
-                    </div>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="input input-bordered w-full  outline-none"
-                    />
-                  </label>
-                </div>
-                <div className="">
-                  <label className="form-control w-full">
-                    <div className="label">
-                      <span className="label-text">Street Address</span>
-                    </div>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="input input-bordered w-full  outline-none"
-                    />
-                  </label>
-                </div>
-                <div className="">
-                  <label className="form-control w-full">
-                    <div className="label">
-                      <span className="label-text">Street Address</span>
-                    </div>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="input input-bordered w-full  outline-none"
-                    />
-                  </label>
-                </div>
-                <div className="">
-                  <label className="form-control w-full">
-                    <div className="label">
-                      <span className="label-text">Street Address</span>
-                    </div>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="input input-bordered w-full  outline-none"
-                    />
-                  </label>
-                </div>
-                <label className="form-control w-full">
-                  <div className="label">
-                    <span className="label-text">
-                      Pick the best fantasy franchise
-                    </span>
-                  </div>
-                  <select className="select select-bordered">
-                    <option disabled selected>
-                      Pick one
-                    </option>
-                    <option>Star Wars</option>
-                    <option>Harry Potter</option>
-                    <option>Lord of the Rings</option>
-                    <option>Planet of the Apes</option>
-                    <option>Star Trek</option>
-                  </select>
-                </label>
-                <div className="">
-                  <label className="form-control w-full">
-                    <div className="label">
-                      <span className="label-text">Street Address</span>
-                    </div>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="input input-bordered w-full  outline-none"
-                    />
-                  </label>
-                </div>
-                <div className="form-control">
-                  <label className="label cursor-pointer justify-start gap-4">
-                    <input
-                      type="checkbox"
-                      defaultChecked
-                      className="checkbox"
-                    />
-                    <span className="label-text font-medium">
-                      Use as my default address
-                    </span>
-                  </label>
-                </div>
-                <div>
-                  <button className="btn btn-wide text-lg bg-slate-950 text-slate-100 hover:bg-slate-700">
-                    Add New Address
-                  </button>
-                </div>
-              </div>
+              <AddAddress />
             </div>
-          </div> */}
+          </div>
         </div>
         <div className="">
           <div className="border p-4">
             <div className="flex justify-between items-center">
               <h4 className="text-md font-semibold">Subtotal</h4>
-              <p>$200.0</p>
+              <p>${subtotal}</p>
             </div>
             <div className="divider" />
             <div className="mb-4">
@@ -221,16 +130,16 @@ const Checkout = () => {
             </div>
             <div className="flex justify-between items-center mb-4">
               <p>Delivery Charge</p>
-              <p>$800</p>
+              <p>$0.00</p>
             </div>
             <div className="flex justify-between items-center">
               <p>Discount</p>
-              <p>$800</p>
+              <p>$0.00</p>
             </div>
             <div className="divider" />
             <div className="flex justify-between items-center font-bold mb-4">
               <p className="">Grant Total</p>
-              <p>$800</p>
+              <p>${subtotal}</p>
             </div>
           </div>
         </div>

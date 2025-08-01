@@ -19,8 +19,10 @@ import { Pagination } from "swiper/modules";
 const OnlinePartner = () => {
   const width = window.screen.width;
   return (
-    <div className="text-center mt-[100px] mb-[100px] lg:mx-[100px] mx-[20px]">
-      <h4 className="text-[34px] mb-[20px] font-bold">Where to find us</h4>
+    <div className="text-center container mx-auto px-4 py-10">
+      <h4 className="text-[34px] mb-[20px] font-bold dark:text-white/90">
+        Where to find us
+      </h4>
       <Swiper
         slidesPerView={width > 570 ? 5 : 2}
         spaceBetween={30}

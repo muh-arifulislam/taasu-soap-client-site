@@ -12,7 +12,7 @@ const Cart = () => {
 
   const navigate = useNavigate();
 
-  const { data } = useGetUserQuery(undefined);
+  const { data, isLoading } = useGetUserQuery(undefined);
 
   const handleProcessCheckout = () => {
     if (cartItems.length > 0 && data?.success) {
@@ -24,6 +24,8 @@ const Cart = () => {
 
       sessionStorage.setItem("shopping_session", JSON.stringify(payload));
       navigate("/checkout");
+    } else {
+      navigate("/login");
     }
   };
 
@@ -31,10 +33,10 @@ const Cart = () => {
 
   const sessionData = sessionStorage.getItem("shopping_session");
   useEffect(() => {
-    if (sessionData) {
+    if (sessionData && data?.success) {
       navigate("/checkout");
     }
-  }, []);
+  }, [isLoading]);
   return (
     <div className="container mx-auto px-4">
       <div className="my-10">
@@ -67,7 +69,7 @@ const Cart = () => {
           <div className="border p-4">
             <div className="flex justify-between items-center">
               <h4 className="text-md font-semibold">Subtotal</h4>
-              <p>${subtotal?.toFixed(2)}</p>
+              <p>${subtotal}</p>
             </div>
             <div className="divider" />
             <div className="mb-4">
@@ -98,7 +100,7 @@ const Cart = () => {
             <div className="divider" />
             <div className="flex justify-between items-center font-bold mb-4">
               <p className="">Grant Total</p>
-              <p>${subtotal?.toFixed(2)}</p>
+              <p>${subtotal}</p>
             </div>
             <div>
               <button

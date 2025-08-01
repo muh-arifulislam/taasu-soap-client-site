@@ -1,5 +1,6 @@
 export type TOrder = {
   _id: string;
+  orderId: string;
   user: string;
   items: [];
   totalAmount: number;

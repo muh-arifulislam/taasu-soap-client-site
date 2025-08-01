@@ -9,13 +9,27 @@
   font-family: "Caveat Brush", cursive;
 }
 
+@font-face {
+  font-family: "Luna";
+  src: url("./assets/fonts/Luna.ttf");
+}
+
+.font-secondary {
+  font-family: "Luna";
+}
+
 .bottom-edge-secondary::after {
   content: "";
   height: 20px;
-  width: 100%;
   position: absolute;
   bottom: 0;
-  background-image: url(../src/images/icons/rough-edge-white.svg);
+  left: 0;
+  width: 100%;
+  background-image: url(../src/assets/icons//rough-edge-white.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+
   --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y))
     rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))

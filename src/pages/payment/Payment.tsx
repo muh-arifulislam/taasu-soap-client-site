@@ -1,7 +1,7 @@
 import { IoCardOutline, IoHomeOutline } from "react-icons/io5";
 import Stepper from "../../components/Stepper/Stepper";
 import { TiDocumentText } from "react-icons/ti";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { usePlaceOrderMutation } from "../../redux/features/order/orderApi";
 import { toast } from "sonner";
 import OrderConfirmedModal from "../../components/Modal/OrderConfirmedModal";
@@ -11,7 +11,9 @@ import { FaCreditCard } from "react-icons/fa";
 import { Elements } from "@stripe/react-stripe-js";
 import StripeCheckoutForm from "./StripeCheckoutForm";
 import { loadStripe, StripeElementsOptions } from "@stripe/stripe-js";
-import { useLocation } from "react-router-dom";
+
+import { TbTruckDelivery } from "react-icons/tb";
+import useCalculateSubtotal from "../../utils/calculateSubtotal";
 
 const steps = [
   {
@@ -49,25 +51,22 @@ const options: StripeElementsOptions = {
 };
 
 const Payment = () => {
-  const { search } = useLocation();
-  const queryParams = new URLSearchParams(search);
-  const isOrderCompleted = queryParams.get("completed") ? true : false;
-
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
     "Stripe" | "COD"
   >("Stripe");
 
   const session = sessionStorage.getItem("shopping_session");
+  const sessionData = session ? JSON.parse(session) : null;
+
+  const subtotal = useCalculateSubtotal();
 
   const dispatch = useAppDispatch();
 
   const [handlePlaceOrder] = usePlaceOrderMutation();
 
   const HandCashOnDelivery = async () => {
-    if (session) {
+    if (sessionData) {
       const toastId = toast.loading("Your order is placing...");
-
-      const sessionData = JSON.parse(session);
 
       const res = await handlePlaceOrder({
         data: sessionData,
@@ -89,47 +88,46 @@ const Payment = () => {
         dispatch(emptyCart());
       } else {
         toast.error("Your order did not placed...!", { id: toastId });
-        console.log("failed to place order.");
       }
     }
   };
 
-  const handleStripeDelivery = async () => {
-    if (session) {
-      const toastId = toast.loading("Your order is placing...");
+  const handleStripePayment = async () => {
+    const toastId = toast.loading("Your order is placing...");
 
-      const sessionData = JSON.parse(session);
-
-      const res = await handlePlaceOrder({
-        data: sessionData,
-        method: "stripe",
-      });
-
-      if (res?.data?.success) {
-        toast.success("Your order have been placed.", {
-          id: toastId,
-          style: { display: "none" },
-        });
-        (
-          document.getElementById("order_confirmed_modal") as HTMLDialogElement
-        )?.showModal();
-
-        //clear session
-        sessionStorage.removeItem("shopping_session");
-        //clear cart items
-        dispatch(emptyCart());
-      } else {
+    fetch(
+      "https://taasu-soap-backend.vercel.app/api/v1/orders/place-order/stripe",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: session,
+      }
+    )
+      .then((res) => res.json())
+      .then(async (data) => {
+        if (data.success) {
+          toast.success("Your order have been placed.", {
+            id: toastId,
+            style: { display: "none" },
+          });
+          (
+            document.getElementById(
+              "order_confirmed_modal"
+            ) as HTMLDialogElement
+          )?.showModal();
+          //clear session
+          sessionStorage.removeItem("shopping_session");
+          //clear cart items
+          dispatch(emptyCart());
+        } else {
+          throw new Error("error");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
         toast.error("Your order did not placed...!", { id: toastId });
-        console.log("failed to place order.");
-      }
-    }
+      });
   };
-
-  useEffect(() => {
-    if (isOrderCompleted && session) {
-      handleStripeDelivery();
-    }
-  }, []);
 
   return (
     <>
@@ -183,11 +181,14 @@ const Payment = () => {
                   }`}
                 >
                   <Elements stripe={stripePromise} options={options}>
-                    <StripeCheckoutForm />
+                    <StripeCheckoutForm
+                      handleStripePayment={handleStripePayment}
+                    />
                   </Elements>
                 </div>
               </div>
-              {/* Cash on Delivery  */}
+
+              {/* cash on deliver */}
               <div
                 className={`flex items-center gap-4 bg-white p-4 my-4 border rounded-md ${
                   selectedPaymentMethod === "COD" ? "border-green-500" : ""
@@ -202,9 +203,11 @@ const Payment = () => {
                   className={`radio h-5 w-5 ${
                     selectedPaymentMethod === "COD" ? "radio-success" : ""
                   }`}
-                  defaultChecked
                 />
-                <p>Cash on Delivery</p>
+                <div className="w-full flex items-center justify-between">
+                  <p>Cash on Delivery</p>
+                  <TbTruckDelivery size={20} className="" />
+                </div>
               </div>
 
               <div>
@@ -222,7 +225,7 @@ const Payment = () => {
               <div className="border p-4">
                 <div className="flex justify-between items-center">
                   <h4 className="text-md font-semibold">Subtotal</h4>
-                  <p>$200.0</p>
+                  <p>${subtotal}</p>
                 </div>
                 <div className="divider" />
                 <div className="mb-4">
@@ -244,16 +247,16 @@ const Payment = () => {
                 </div>
                 <div className="flex justify-between items-center mb-4">
                   <p>Delivery Charge</p>
-                  <p>$800</p>
+                  <p>$0.00</p>
                 </div>
                 <div className="flex justify-between items-center">
                   <p>Discount</p>
-                  <p>$800</p>
+                  <p>$0.00</p>
                 </div>
                 <div className="divider" />
                 <div className="flex justify-between items-center font-bold mb-4">
                   <p className="">Grant Total</p>
-                  <p>$800</p>
+                  <p>${subtotal}</p>
                 </div>
               </div>
             </div>
