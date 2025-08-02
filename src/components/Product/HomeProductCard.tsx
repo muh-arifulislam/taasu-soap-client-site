@@ -2,7 +2,7 @@ import Button from "../Button/Button";
 import { TProduct } from "../../types";
 import { NavLink } from "react-router-dom";
 
-const Product = ({ data }: { data: TProduct }) => {
+const HomeProductCard = ({ data }: { data: TProduct }) => {
   return (
     <div className="text-center flex flex-col items-center justify-between border p-4 rounded-lg">
       <div>
@@ -21,7 +21,7 @@ const Product = ({ data }: { data: TProduct }) => {
           {data?.name}
         </h2>
       </div>
-      <div>
+      <div className="w-full">
         <h4 className="text-xl mb-[20px] font-bold">${data?.price}</h4>
         <NavLink to={"/shop"}>
           <Button>Shop Now</Button>
@@ -31,4 +31,4 @@ const Product = ({ data }: { data: TProduct }) => {
   );
 };
 
-export default Product;
+export default HomeProductCard;

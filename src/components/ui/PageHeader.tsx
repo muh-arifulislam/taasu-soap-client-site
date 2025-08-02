@@ -22,7 +22,7 @@ type PageHeaderProps = {
 
 const PageHeader: React.FC<PageHeaderProps> = ({ title, breadcrumbs }) => {
   return (
-    <div className="">
+    <div className="w-full max-w-screen-2xl mx-auto px-0 2xl:px-4">
       <div
         className="bg-center bg-cover bg-no-repeat relative"
         style={{ backgroundImage: `url(${bg})` }}

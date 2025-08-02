@@ -6,5 +6,5 @@ export type TBanner = {
   btnText: string;
   btnUrl: string;
   image: string;
-  secondaryImage: string;
+  secondaryImage?: string;
 };

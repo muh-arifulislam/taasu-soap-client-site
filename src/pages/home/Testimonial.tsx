@@ -6,11 +6,11 @@ import contentImgNude from "../../assets/icons/content-box-bg-nude.svg";
 
 const Testimonial = () => {
   return (
-    <section className="container mx-auto px-4 py-10 text-center transition-colors duration-300 rounded-xl">
-      <h1 className="mb-[20px] font-secondary text-xl md:text-2xl leading-10 text-gray-900 dark:text-white/90">
+    <section className="container mx-auto px-4 py-5 md:py-8 lg:py-10 text-center transition-colors duration-300 rounded-xl">
+      <h1 className="mb-2 font-secondary text-xl md:text-2xl leading-10 text-gray-900 dark:text-white/90">
         Simple ingredients you understand…
       </h1>
-      <h4 className="text-[20px] mb-[20px] font-bold text-gray-800 dark:text-gray-200">
+      <h4 className="mb-[20px] text-gray-800 dark:text-gray-200 w-full max-w-2xl mx-auto text-center">
         Vegan, cruelty-free and hand-crafted in the UK, our soaps are made using
         the finest natural ingredients, all ethically sourced.
       </h4>

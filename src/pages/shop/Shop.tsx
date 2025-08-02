@@ -1,10 +1,11 @@
 import PageHeader from "../../components/ui/PageHeader";
 import { useEffect, useState } from "react";
-import ProductCard from "../../components/Card/ProductCard";
 import { useGetAllProductsQuery } from "../../redux/features/product/productApi";
 import ErrorComponent from "../../components/ui/ErrorComponent";
 import ProductFilterSidebar from "./ProductFilterSidebar";
 import { Funnel, LayoutGrid, List } from "lucide-react";
+import Product from "../../components/Product";
+import { TProduct } from "../../types";
 
 const Shop = () => {
   const [isGrid, setIsGrid] = useState(false);
@@ -160,8 +161,8 @@ const ContentComponent = ({ data, isGrid }: { data: []; isGrid: boolean }) => (
       isGrid ? "grid-cols-2" : "grid-cols-1"
     }`}
   >
-    {data.map((product, idx) => (
-      <ProductCard key={idx} product={product}></ProductCard>
+    {data?.map((product: TProduct) => (
+      <Product data={product} key={product?._id} />
     ))}
   </div>
 );

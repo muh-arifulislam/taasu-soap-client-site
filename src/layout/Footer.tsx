@@ -6,11 +6,11 @@ import bgEdge from "../assets/icons/rough-edge-white.svg";
 const Footer = () => {
   return (
     <footer>
-      <div className="relative">
+      <div className="relative bg-primary dark:bg-slate-900">
         <span className="absolute w-full top-0 left-0">
           <img className="w-full h-[25px]" src={bgEdge} alt="" />
         </span>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-5 md:gap-0  lg:text-start text-center lg:px-[100px] px-[20px] bg-primary text-white py-20 text-lg dark:bg-slate-900">
+        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-5 md:gap-0  lg:text-start text-center text-white py-20 text-lg ">
           <div className="flex flex-col">
             <h2 className="mb-[15px] font-bold text-xl">About Us</h2>
             <a href="#">Our Story</a>
@@ -63,9 +63,9 @@ const Footer = () => {
         </span>
       </div>
       <div></div>
-      <p className="pb-[20px] px-[20px] text-center text-lg text-slate-800 dark:text-white/60">
-        Copyright 2022 Taasu Soap. Reg. Company Number: 06727643. VAT Number:
-        135300751.
+      <p className="pb-[20px] px-4 text-center text-lg text-slate-800 dark:text-white/60">
+        Copyright {new Date().getFullYear()} Taasu Soap. Reg. Company Number:
+        06727643. VAT Number: 135300751.
       </p>
     </footer>
   );
