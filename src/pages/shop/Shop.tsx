@@ -36,17 +36,20 @@ const Shop = () => {
           },
         ]}
       />
-      <div className="relative py-8 sm:py-[60px] bg-secondary dark:bg-slate-400/30 bottom-edge-secondary dark:text-white/90">
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-[50px] text-center">
-          <h2 className="font-secondary text-xl sm:text-[2.5rem] font-caveat-brush">
-            Special Offers!
-          </h2>
-          <div className="text-xl">
-            <p>Save up to 20% when you buy in Bulk</p>
-            <p>FREE delivery on orders over £30</p>
+      <div className="w-full max-w-screen-2xl mx-auto px-0 2xl:px-4">
+        <div className="relative py-8 sm:py-[60px] bg-secondary dark:bg-slate-400/30 bottom-edge-secondary dark:text-white/90">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-[50px] text-center">
+            <h2 className="font-secondary text-xl sm:text-[2.5rem] font-caveat-brush">
+              Special Offers!
+            </h2>
+            <div className="text-xl">
+              <p>Save up to 20% when you buy in Bulk</p>
+              <p>FREE delivery on orders over £30</p>
+            </div>
           </div>
         </div>
       </div>
+
       <div className="container mx-auto px-4 py-8 grid grid-cols-3 lg:grid-cols-4 gap-8">
         <div className="hidden md:block">
           <ProductFilterSidebar
