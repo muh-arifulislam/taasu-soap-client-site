@@ -10,8 +10,8 @@ import "swiper/css/autoplay";
 
 import "./slider.css";
 
-import { Pagination, Autoplay } from "swiper/modules";
 // import required modules
+import { Pagination, Autoplay } from "swiper/modules";
 
 type PropsType<T> = {
   data: T[];
@@ -21,13 +21,13 @@ type PropsType<T> = {
 
 const Slider = <T,>({ data, renderItem }: PropsType<T>) => {
   return (
-    <div className="">
+    <div className="w-full max-w-screen-2xl mx-auto px-0 2xl:px-4">
       <Swiper
         slidesPerView={1}
         spaceBetween={0}
         loop={true}
         // autoplay={{ delay: 5000 }}
-        autoplay={false}
+        autoplay={true}
         pagination={{
           clickable: true,
         }}

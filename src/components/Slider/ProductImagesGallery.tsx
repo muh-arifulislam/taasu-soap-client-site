@@ -12,11 +12,9 @@ import "swiper/css/thumbs";
 
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
-
 // Import Swiper class for typing
 import { Swiper as SwiperClass } from "swiper";
-
-const ProductSlider = ({ images }: { images: string[] }) => {
+const ProductImagesGallery = ({ images }: { images: string[] }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null); // Specify the state type
 
   return (
@@ -26,6 +24,7 @@ const ProductSlider = ({ images }: { images: string[] }) => {
         navigation={false}
         {...(thumbsSwiper ? { thumbs: { swiper: thumbsSwiper } } : {})}
         modules={[FreeMode, Navigation, Thumbs]}
+        loop={true}
         className="thumSwiperMain"
       >
         {images.map((image) => (
@@ -58,4 +57,4 @@ const ProductSlider = ({ images }: { images: string[] }) => {
   );
 };
 
-export default ProductSlider;
+export default ProductImagesGallery;

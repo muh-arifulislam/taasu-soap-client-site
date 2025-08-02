@@ -9,7 +9,7 @@ type PropsType = {
 const BannerSlider = ({ data }: PropsType) => {
   return (
     <div
-      className="relative h-[70vh] sm:h-[80vh] bg-center bg-cover bg-no-repeat z-0"
+      className="relative w-full max-w-screen-2xl h-[500px] bg-center bg-cover bg-no-repeat z-0 "
       style={{
         backgroundImage: `url(${data.image})`,
       }}
@@ -39,28 +39,3 @@ const BannerSlider = ({ data }: PropsType) => {
 };
 
 export default BannerSlider;
-
-{
-  /* <div className="relative">
-      <img src={data.image} alt="" />
-      <div className="lg:px-[100px] px-[10px] lg:py-[100px] py-[50px] absolute top-0 w-full h-full grid lg:grid-cols-2 grid-cols-1">
-        <div className="flex flex-col justify-center">
-          <div
-            style={{ backgroundImage: `url(${divBg})` }}
-            className="px-[40px] pt-[40px] pb-[20px]"
-          >
-            <h2 className="font-secondary mb-[10px]">{data.title}</h2>
-
-            <h4 className="text-xl mb-[20px]">{data.description}</h4>
-
-            <div>{data.btn && <Button>{data.btnText}</Button>}</div>
-          </div>
-        </div>
-        <div className="flex justify-center items-center">
-          {data.secondaryImage && (
-            <img className="w-[80%] h-[80%]" src={data.secondaryImage} alt="" />
-          )}
-        </div>
-      </div>
-    </div> */
-}

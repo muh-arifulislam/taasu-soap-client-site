@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import ingredientsImage from "../../assets/icons/lsc-usp-icons.svg";
 
 import { Link, useParams } from "react-router-dom";
-import ProductSlider from "../../lib/Slider/ProductSlider";
+
 import ThumbImagesSkeleton from "../../components/Skeleton/ThumbImagesSkeleton";
 import { FaStar } from "react-icons/fa";
 import { FaCircleDot } from "react-icons/fa6";
@@ -19,6 +19,7 @@ import { TProduct } from "../../types";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { addToCart, selectCart } from "../../redux/features/cart/cartSlice";
 import PageHeader from "../../components/ui/PageHeader";
+import ProductImagesGallery from "../../components/Slider/ProductImagesGallery";
 
 const ProductDetails = () => {
   const [reviews, setReviews] = useState(5);
@@ -61,37 +62,7 @@ const ProductDetails = () => {
   }, [handleAddToBasket]);
 
   if (isLoading) {
-    return (
-      <div className="container mx-auto px-5 my-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="w-full">
-            <div className="skeleton h-[300px] w-[90%] mx-auto"></div>
-            <div className="flex items-center justify-center gap-4 my-5">
-              <div className="skeleton h-24 w-full"></div>
-              <div className="skeleton h-24 w-full"></div>
-              <div className="skeleton h-24 w-full"></div>
-              <div className="skeleton h-24 w-full"></div>
-            </div>
-          </div>
-          <div className="flex flex-col justify-around">
-            <div className="skeleton h-6 w-full mb-5"></div>
-            <div className="flex items-center gap-4 mb-5">
-              <div className="skeleton h-4 w-36"></div>
-              <div className="skeleton h-4 w-36"></div>
-              <div className="skeleton h-4 w-36"></div>
-            </div>
-            <div className="flex items-center gap-4 mb-5">
-              <div className="skeleton h-36 w-36"></div>
-              <div className="skeleton h-36 w-36"></div>
-            </div>
-            <div className="skeleton h-4 w-full mb-2"></div>
-            <div className="skeleton h-4 w-full mb-2"></div>
-            <div className="skeleton h-4 w-full mb-2"></div>
-            <div className="skeleton h-4 w-full mb-2"></div>
-          </div>
-        </div>
-      </div>
-    );
+    return <PageLoaderSkeleton />;
   }
 
   return (
@@ -117,7 +88,7 @@ const ProductDetails = () => {
             <div className="">
               <div>
                 {images ? (
-                  <ProductSlider images={images} />
+                  <ProductImagesGallery images={images} />
                 ) : (
                   <ThumbImagesSkeleton />
                 )}
@@ -292,46 +263,8 @@ const ProductDetails = () => {
               >
                 <div className="py-10">
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <div className="shadow-md p-2">
-                      <div className="">
-                        <h2 className="text-xl font-semibold mb-3">
-                          Overal Rating
-                        </h2>
-                        <div className="text-center">
-                          <p className="text-4xl font-semibold mb-2">
-                            4.5{" "}
-                            <span className="text-3xl text-slate-500">/5</span>
-                          </p>
-                          <div className="flex items-center justify-center gap-2 text-xl mb-2 text-amber-400">
-                            <FaStar />
-                            <FaStar />
-                            <FaStar />
-                            <FaStar />
-                            <FaStar />
-                          </div>
-                          <p className="text-slate-400 font-semibold">
-                            202 reviews
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="shadow-md p-2">
-                      <p className="flex items-center gap-2">
-                        <span>
-                          <FaCircleDot size={20} className="text-blue-600" />
-                        </span>
-                        Rating Breakdown
-                      </p>
-                      <div className="mt-2 px-4">
-                        <RatingProgress star={5} value={90} total={202} />
-                        <RatingProgress star={4} value={55} total={202} />
-                        <RatingProgress star={3} value={29} total={202} />
-                        <RatingProgress star={2} value={18} total={202} />
-                        <RatingProgress star={1} value={10} total={202} />
-                      </div>
-                    </div>
-
+                    <OverallRatings />
+                    <RatingsBreakdown />
                     <div className="col-span-1 md:col-span-2 shadow-md p-2">
                       <p className="flex items-center gap-2 font-semibold">
                         <span>
@@ -380,3 +313,80 @@ const ProductDetails = () => {
 };
 
 export default ProductDetails;
+
+const PageLoaderSkeleton = () => {
+  return (
+    <div className="container mx-auto px-5 my-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="w-full">
+          <div className="skeleton h-[300px] w-[90%] mx-auto"></div>
+          <div className="flex items-center justify-center gap-4 my-5">
+            <div className="skeleton h-24 w-full"></div>
+            <div className="skeleton h-24 w-full"></div>
+            <div className="skeleton h-24 w-full"></div>
+            <div className="skeleton h-24 w-full"></div>
+          </div>
+        </div>
+        <div className="flex flex-col justify-around">
+          <div className="skeleton h-6 w-full mb-5"></div>
+          <div className="flex items-center gap-4 mb-5">
+            <div className="skeleton h-4 w-36"></div>
+            <div className="skeleton h-4 w-36"></div>
+            <div className="skeleton h-4 w-36"></div>
+          </div>
+          <div className="flex items-center gap-4 mb-5">
+            <div className="skeleton h-36 w-36"></div>
+            <div className="skeleton h-36 w-36"></div>
+          </div>
+          <div className="skeleton h-4 w-full mb-2"></div>
+          <div className="skeleton h-4 w-full mb-2"></div>
+          <div className="skeleton h-4 w-full mb-2"></div>
+          <div className="skeleton h-4 w-full mb-2"></div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const OverallRatings = () => {
+  return (
+    <div className="shadow-md p-2">
+      <div className="">
+        <h2 className="text-xl font-semibold mb-3">Overall Rating</h2>
+        <div className="text-center">
+          <p className="text-4xl font-semibold mb-2">
+            4.5 <span className="text-3xl text-slate-500">/5</span>
+          </p>
+          <div className="flex items-center justify-center gap-2 text-xl mb-2 text-amber-400">
+            <FaStar />
+            <FaStar />
+            <FaStar />
+            <FaStar />
+            <FaStar />
+          </div>
+          <p className="text-slate-400 font-semibold">202 reviews</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const RatingsBreakdown = () => {
+  return (
+    <div className="shadow-md p-2">
+      <p className="flex items-center gap-2">
+        <span>
+          <FaCircleDot size={20} className="text-blue-600" />
+        </span>
+        Rating Breakdown
+      </p>
+      <div className="mt-2 px-4">
+        <RatingProgress star={5} value={90} total={202} />
+        <RatingProgress star={4} value={55} total={202} />
+        <RatingProgress star={3} value={29} total={202} />
+        <RatingProgress star={2} value={18} total={202} />
+        <RatingProgress star={1} value={10} total={202} />
+      </div>
+    </div>
+  );
+};

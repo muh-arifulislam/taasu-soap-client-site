@@ -8,7 +8,7 @@ dayjs.extend(relativeTime);
 
 const BlogCard = ({ data }: { data: IBlog }) => {
   return (
-    <div className="card max-w-96 w-full">
+    <div className="card w-full">
       <figure>
         <img
           src={
