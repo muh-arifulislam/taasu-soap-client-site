@@ -3,7 +3,13 @@
 @tailwind utilities;
 
 /* google fonts  */
-@import url("https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Niconne&display=swap");
+
+.niconne-regular {
+  font-family: "Niconne", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
 
 .font-caveat-brush {
   font-family: "Caveat Brush", cursive;
