@@ -1,13 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useGetBlogByIdQuery } from "../../redux/features/blog/blogApi";
-import { IBlog } from "../../types/blog";
-import RichDataComponent from "../../components/ui/RichDataComponent";
+
 import PageHeader from "../../components/ui/PageHeader";
+import RichTextRenderer from "../../components/ui/RichTextRenderer";
 
 const BlogDetails = () => {
   const { id } = useParams();
 
   const { data, isLoading } = useGetBlogByIdQuery({ id: id as string });
+
+  console.log(data?.data);
 
   if (isLoading) {
     return (
@@ -72,8 +74,178 @@ const BlogDetails = () => {
             </div>
           </div>
           <div>
-            <RichDataComponent
-              htmlContent={(data?.data as IBlog)?.mainContent}
+            <RichTextRenderer
+              content={[
+                {
+                  type: "heading-one",
+                  children: [{ text: "The Art and Science of Handmade Soap" }],
+                },
+                {
+                  type: "paragraph",
+                  children: [
+                    {
+                      text: "Handmade soap is more than just a cleansing product—it’s a blend of ",
+                    },
+                    { text: "artistry", bold: true },
+                    { text: " and " },
+                    { text: "science", italic: true },
+                    {
+                      text: " that transforms simple ingredients into luxurious experiences.",
+                    },
+                  ],
+                },
+                {
+                  type: "heading-two",
+                  children: [{ text: "Why Choose Handmade Soap?" }],
+                },
+                {
+                  type: "paragraph",
+                  children: [
+                    {
+                      text: "Unlike commercial soaps, handmade soap is crafted with ",
+                    },
+                    { text: "natural oils", bold: true },
+                    { text: " and " },
+                    { text: "botanical extracts", italic: true },
+                    {
+                      text: ". It moisturizes the skin rather than stripping it.",
+                    },
+                  ],
+                },
+                {
+                  type: "paragraph",
+                  children: [
+                    { text: "Learn more about natural ingredients at " },
+                    {
+                      text: "https://www.soapmaking.org",
+                      link: "https://www.soapmaking.org",
+                    },
+                    { text: "." },
+                  ],
+                },
+                {
+                  type: "heading-two",
+                  children: [{ text: "Key Ingredients in Handmade Soap" }],
+                },
+                {
+                  type: "bulleted-list",
+                  children: [
+                    {
+                      type: "list-item",
+                      children: [
+                        { text: "Olive oil – nourishes and softens skin" },
+                      ],
+                    },
+                    {
+                      type: "list-item",
+                      children: [{ text: "Coconut oil – creates rich lather" }],
+                    },
+                    {
+                      type: "list-item",
+                      children: [
+                        {
+                          text: "Essential oils – natural fragrance and therapeutic properties",
+                        },
+                      ],
+                    },
+                    {
+                      type: "list-item",
+                      children: [
+                        {
+                          text: "Botanical additives – herbs, flowers, and clays for texture and benefits",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                {
+                  type: "heading-two",
+                  children: [{ text: "The Handmade Soap Process" }],
+                },
+                {
+                  type: "paragraph",
+                  children: [
+                    {
+                      text: "Creating handmade soap involves several careful steps:",
+                    },
+                  ],
+                },
+                {
+                  type: "numbered-list",
+                  children: [
+                    {
+                      type: "list-item",
+                      children: [{ text: "Measure oils and lye accurately." }],
+                    },
+                    {
+                      type: "list-item",
+                      children: [
+                        { text: "Mix ingredients at the right temperature." },
+                      ],
+                    },
+                    {
+                      type: "list-item",
+                      children: [{ text: "Pour into molds and let it set." }],
+                    },
+                    {
+                      type: "list-item",
+                      children: [
+                        {
+                          text: "Cure the soap for 4–6 weeks for hardness and longevity.",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                {
+                  type: "paragraph",
+                  children: [
+                    { text: "Read our detailed guide for beginners here: " },
+                    {
+                      text: "https://www.example.com/soap-guide",
+                      link: "https://www.example.com/soap-guide",
+                    },
+                    { text: "." },
+                  ],
+                },
+                {
+                  type: "heading-two",
+                  children: [{ text: "Benefits of Handmade Soap" }],
+                },
+                {
+                  type: "paragraph",
+                  children: [
+                    {
+                      text: "Handmade soaps provide gentle cleansing, retain natural oils, and often include ",
+                    },
+                    { text: "therapeutic essential oils", italic: true },
+                    { text: " that improve well-being." },
+                  ],
+                },
+                {
+                  type: "paragraph",
+                  children: [
+                    { text: "Explore our full range of soaps at " },
+                    {
+                      text: "https://www.handmadesoaps.com",
+                      link: "https://www.handmadesoaps.com",
+                    },
+                    { text: " and experience the difference." },
+                  ],
+                },
+                {
+                  type: "heading-two",
+                  children: [{ text: "Conclusion" }],
+                },
+                {
+                  type: "paragraph",
+                  children: [
+                    {
+                      text: "Whether you are a soap enthusiast or just looking for a gentle, natural alternative, handmade soap offers quality, creativity, and care in every bar.",
+                    },
+                  ],
+                },
+              ]}
             />
           </div>
         </div>
